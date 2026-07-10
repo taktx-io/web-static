@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_subprocess_context" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="OrderFulfillmentProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Order Received">
+      <bpmn:outgoing>Flow_1xgbrk1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:subProcess id="SubProcess_1" name="Fulfillment">
+      <bpmn:incoming>Flow_1xgbrk1</bpmn:incoming>
+      <bpmn:outgoing>Flow_15dysn5</bpmn:outgoing>
+      <bpmn:startEvent id="SubStart" name="Start Fulfillment">
+        <bpmn:outgoing>Flow_0la0w2j</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:endEvent id="SubEnd" name="Fulfillment Complete">
+        <bpmn:incoming>Flow_1svrikj</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:userTask id="UserTask_Pick" name="Pick Items">
+        <bpmn:incoming>Flow_0la0w2j</bpmn:incoming>
+        <bpmn:outgoing>Flow_1i338uk</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:userTask id="UserTask_Pack" name="Pack Items">
+        <bpmn:incoming>Flow_1i338uk</bpmn:incoming>
+        <bpmn:outgoing>Flow_1hxjq3k</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:userTask id="UserTask_Ship" name="Ship Items">
+        <bpmn:incoming>Flow_1hxjq3k</bpmn:incoming>
+        <bpmn:outgoing>Flow_1svrikj</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:sequenceFlow id="Flow_0la0w2j" sourceRef="SubStart" targetRef="UserTask_Pick" />
+      <bpmn:sequenceFlow id="Flow_1i338uk" sourceRef="UserTask_Pick" targetRef="UserTask_Pack" />
+      <bpmn:sequenceFlow id="Flow_1hxjq3k" sourceRef="UserTask_Pack" targetRef="UserTask_Ship" />
+      <bpmn:sequenceFlow id="Flow_1svrikj" sourceRef="UserTask_Ship" targetRef="SubEnd" />
+    </bpmn:subProcess>
+    <bpmn:endEvent id="EndEvent_1" name="Order Complete">
+      <bpmn:incoming>Flow_15dysn5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1xgbrk1" sourceRef="StartEvent_1" targetRef="SubProcess_1" />
+    <bpmn:sequenceFlow id="Flow_15dysn5" sourceRef="SubProcess_1" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_subprocess_context">
+    <bpmndi:BPMNPlane id="BPMNPlane_subprocess_context" bpmnElement="OrderFulfillmentProcess">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="50" y="70" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="29" y="106" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="432" y="70" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="411" y="106" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubProcess_1_di" bpmnElement="SubProcess_1">
+        <dc:Bounds x="136" y="28" width="220" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1xgbrk1_di" bpmnElement="Flow_1xgbrk1">
+        <di:waypoint x="86" y="88" />
+        <di:waypoint x="136" y="88" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15dysn5_di" bpmnElement="Flow_15dysn5">
+        <di:waypoint x="356" y="88" />
+        <di:waypoint x="432" y="88" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="SubProcess_1">
+      <bpmndi:BPMNShape id="SubStart_di" bpmnElement="SubStart">
+        <dc:Bounds x="180" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="160" y="138" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubEnd_di" bpmnElement="SubEnd">
+        <dc:Bounds x="762" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="755" y="138" width="51" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wif3n5_di" bpmnElement="UserTask_Pick">
+        <dc:Bounds x="275" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ltrihl_di" bpmnElement="UserTask_Pack">
+        <dc:Bounds x="439" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ocb0t6_di" bpmnElement="UserTask_Ship">
+        <dc:Bounds x="603" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0la0w2j_di" bpmnElement="Flow_0la0w2j">
+        <di:waypoint x="216" y="120" />
+        <di:waypoint x="275" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1i338uk_di" bpmnElement="Flow_1i338uk">
+        <di:waypoint x="375" y="120" />
+        <di:waypoint x="439" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hxjq3k_di" bpmnElement="Flow_1hxjq3k">
+        <di:waypoint x="539" y="120" />
+        <di:waypoint x="603" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1svrikj_di" bpmnElement="Flow_1svrikj">
+        <di:waypoint x="703" y="120" />
+        <di:waypoint x="762" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

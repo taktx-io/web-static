@@ -1,0 +1,142 @@
+<div class="container mx-auto px-4 py-8 max-w-4xl">
+  <h1 class="text-3xl font-bold mb-6">Cookie Policy</h1>
+
+  <div class="mb-8">
+    <p class="mb-4">Last updated: October 19, 2025</p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-4">Introduction</h2>
+    <p class="mb-3">TaktX ("we", "our", or "us") uses cookies and similar technologies on our website. This Cookie
+      Policy explains how we use cookies, how they help us provide you with a better experience, and what choices you
+      have regarding their use.</p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-4">What are Cookies?</h2>
+    <p class="mb-3">Cookies are small text files that are stored on your computer or mobile device when you visit a
+      website. They are widely used to make websites work more efficiently and provide information to the website
+      owners. Cookies can be "persistent" or "session" cookies. Persistent cookies remain on your device when you go
+      offline, while session cookies are deleted as soon as you close your web browser.</p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-4">How We Use Cookies</h2>
+    <p class="mb-3">We use cookies for various purposes, categorized as follows:</p>
+
+    <h3 class="text-xl font-semibold mt-4 mb-2">Essential Cookies</h3>
+    <p class="mb-3">These cookies are necessary for the website to function properly. They enable basic functions like
+      page navigation and access to secure areas of the website. The website cannot function properly without these
+      cookies. You cannot opt out of these cookies.</p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Authentication cookies that maintain your logged-in status</li>
+      <li>Security cookies that help protect our users</li>
+      <li>Cookies required for the proper functioning of our website's features</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold mt-4 mb-2">Functional Cookies</h3>
+    <p class="mb-3">These cookies enable the website to provide enhanced functionality and personalization. They may be
+      set by us or by third-party providers whose services we have added to our pages. If you do not allow these
+      cookies, some or all of these services may not function properly.</p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Cookies that remember your preferences (like language or region)</li>
+      <li>Cookies that remember which documentation sections you've expanded</li>
+      <li>Cookies that personalize your experience on our site</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold mt-4 mb-2">Analytics Cookies</h3>
+    <p class="mb-3">These cookies collect information about how visitors use our website, including which pages visitors
+      go to most often and if they receive error messages. The information is aggregated and anonymous. We use this data
+      to improve our website and user experience.</p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Understanding which pages are most popular</li>
+      <li>Identifying how users navigate through our site</li>
+      <li>Detecting and addressing errors</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-4">Third-Party Cookies</h2>
+    <p class="mb-3">In addition to our own cookies, we may also use third-party services that set cookies on our
+      website. These services include:</p>
+    <ul class="list-disc pl-6 mb-4">
+      <li>Authentication providers (like Keycloak)</li>
+      <li>Content management systems</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-4">How to Control Cookies</h2>
+    <p class="mb-3">You can control and/or delete cookies as you wish. You can delete all cookies that are already on
+      your computer and you can set most browsers to prevent them from being placed. If you do this, however, you may
+      have to manually adjust some preferences every time you visit a site and some services and functionalities may not
+      work.</p>
+
+    <div class="cookie-preferences mt-8 p-6 bg-gray-100 rounded-lg">
+      <h3 class="text-xl font-semibold mb-4">Your Cookie Preferences</h3>
+      <p class="mb-4">You can adjust your cookie preferences below. Please note that disabling certain cookies may
+        impact the functionality of the website.</p>
+
+      <!-- Status message for feedback -->
+      <div *ngIf="updateMessage" class="mb-4 p-3 bg-green-100 text-green-800 rounded">
+        {{ updateMessage }}
+      </div>
+
+      <div class="flex justify-between items-center py-2 border-b">
+        <div>
+          <span class="font-semibold">Essential Cookies</span>
+          <p class="text-sm text-gray-500">Required for the website to function properly</p>
+        </div>
+        <div class="cookie-toggle">
+          <input type="checkbox" checked disabled id="essentialCookies">
+          <label for="essentialCookies" class="text-sm text-gray-500">Always enabled</label>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center py-2 border-b">
+        <div>
+          <span class="font-semibold">Functional Cookies</span>
+          <p class="text-sm text-gray-500">Enable enhanced functionality and personalization</p>
+        </div>
+        <div class="cookie-toggle">
+          <span class="status-badge mr-2" [class.active]="cookieSettings.functional" [class.inactive]="!cookieSettings.functional">
+            {{ cookieSettings.functional ? 'Enabled' : 'Disabled' }}
+          </span>
+          <button *ngIf="!cookieSettings.functional" (click)="updateCookiePreferences(true, true, cookieSettings.analytics)"
+            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+            Enable
+          </button>
+          <button *ngIf="cookieSettings.functional" (click)="updateCookiePreferences(true, false, cookieSettings.analytics)"
+            class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
+            Disable
+          </button>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center py-2 border-b">
+        <div>
+          <span class="font-semibold">Analytics Cookies</span>
+          <p class="text-sm text-gray-500">Help us improve our website by collecting anonymous usage data</p>
+        </div>
+        <div class="cookie-toggle">
+          <span class="status-badge mr-2" [class.active]="cookieSettings.analytics" [class.inactive]="!cookieSettings.analytics">
+            {{ cookieSettings.analytics ? 'Enabled' : 'Disabled' }}
+          </span>
+          <button *ngIf="!cookieSettings.analytics" (click)="updateCookiePreferences(true, cookieSettings.functional, true)"
+            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+            Enable
+          </button>
+          <button *ngIf="cookieSettings.analytics" (click)="updateCookiePreferences(true, cookieSettings.functional, false)"
+            class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
+            Disable
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-6 flex space-x-4">
+        <button (click)="acceptAll()" class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Accept
+          All</button>
+        <button (click)="acceptEssential()"
+          class="px-6 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">Essential Only</button>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-4">Changes to our Cookie Policy</h2>
+    <p class="mb-3">We may update this Cookie Policy from time to time to reflect changes in technology, regulation, or
+      our business practices. Any changes will be posted on this page with an updated "last updated" date.</p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-4">Contact Us</h2>
+    <p class="mb-3">If you have any questions about our use of cookies, please <a href="/contact" class="text-blue-600 hover:text-blue-800">contact us</a>
+    </p>
+  </div>
+</div>

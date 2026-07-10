@@ -1,0 +1,64 @@
+<ul class="space-y-1 mt-2">
+  <li *ngFor="let section of sections; let i = index" class="relative">
+    <div
+      class="flex items-center justify-between py-1 px-2 rounded-md cursor-pointer transition-colors relative"
+      [class.bg-gray-700]="section.id && selectedSectionId && section.id.toString() === selectedSectionId.toString()"
+      [class.border-l-2]="section.id && selectedSectionId && section.id.toString() === selectedSectionId.toString()"
+      [class.border-primary]="section.id && selectedSectionId && section.id.toString() === selectedSectionId.toString()"
+      [class.font-medium]="section.id && selectedSectionId && section.id.toString() === selectedSectionId.toString()"
+      [class.hover:bg-gray-700]="!(section.id && selectedSectionId && section.id.toString() === selectedSectionId.toString())"
+      (click)="$event.stopPropagation(); onSelect(section, i, sectionPaths.concat(i.toString()))"
+    >
+      <!-- Section title with expand/collapse indicator -->
+      <div class="flex items-center">
+        <span
+          *ngIf="section.subsections && section.subsections.length > 0"
+          class="mr-2 cursor-pointer"
+          (click)="$event.stopPropagation(); toggleExpanded(section)"
+        >
+          <i [class]="section.id && isSectionExpanded(section.id) ? 'fas fa-angle-down' : 'fas fa-angle-right'"></i>
+        </span>
+        <span class="truncate">{{ section.title }}</span>
+        <span *ngIf="!section.isActive" class="ml-2 text-sm px-2 py-1 bg-gray-700 text-gray-400 rounded">
+                  Inactive
+                </span>
+      </div>
+
+      <!-- Edit and Add subsection buttons (only for admin users) -->
+      <div class="flex items-center ml-auto">
+        <button
+          *ngIf="isAdmin"
+          class="p-1 text-gray-300 hover:text-primary mr-2"
+          (click)="onEditSection($event, section, sectionPaths.concat(i.toString()))"
+          title="Edit section">
+          <i class="fas fa-edit text-xs"></i>
+        </button>
+        <button
+          *ngIf="isAdmin"
+          class="p-1 text-gray-300 hover:text-primary"
+          (click)="onAddSection($event, section, sectionPaths.concat(i.toString()))"
+          title="Add subsection">
+          <i class="fas fa-plus text-xs"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Recursive subsections -->
+    <div
+      *ngIf="section.subsections && section.subsections.length > 0 && section.id && isSectionExpanded(section.id)"
+      class="ml-4 pl-2 mt-1 border-l border-gray-700"
+    >
+      <app-doc-section-tree
+        [sections]="section.subsections"
+        [selectedSectionId]="selectedSectionId"
+        [sectionPaths]="sectionPaths.concat(i.toString())"
+        [isAdmin]="isAdmin"
+        [expandedSections]="expandedSections"
+        (select)="onNestedSelect($event)"
+        (addSection)="onNestedAddSection($event)"
+        (editSection)="onNestedEditSection($event)"
+        (toggleExpand)="toggleExpand.emit($event)">
+      </app-doc-section-tree>
+    </div>
+  </li>
+</ul>

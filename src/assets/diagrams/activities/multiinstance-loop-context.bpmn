@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_multiinstance_loop_context" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="BatchApprovalProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_0yoqc7h</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:subProcess id="SubProcess_1" name="Review Applications">
+      <bpmn:incoming>Flow_1216uxe</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yv57hq</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics>
+        <bpmn:loopCardinality>3</bpmn:loopCardinality>
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:userTask id="UserTask_Review" name="Review Application">
+        <bpmn:outgoing>Flow_097w7db</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:exclusiveGateway id="Gateway_ReviewOutcome" name="Approved?">
+        <bpmn:incoming>Flow_097w7db</bpmn:incoming>
+        <bpmn:outgoing>Flow_0tvuyyg</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:userTask id="UserTask_ManualCheck" name="Manual Check">
+        <bpmn:incoming>Flow_0tvuyyg</bpmn:incoming>
+        <bpmn:outgoing>Flow_142y4bv</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:endEvent id="EndEvent_Approved" name="Approved">
+        <bpmn:incoming>Flow_0icmf9a</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:endEvent id="EndEvent_Rejected" name="Rejected">
+        <bpmn:incoming>Flow_06qkfu5</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_GatewayToApproved" sourceRef="Gateway_ReviewOutcome" targetRef="EndEvent_Approved">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved}</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_097w7db" sourceRef="UserTask_Review" targetRef="Gateway_ReviewOutcome" />
+      <bpmn:sequenceFlow id="Flow_0tvuyyg" sourceRef="Gateway_ReviewOutcome" targetRef="UserTask_ManualCheck" />
+      <bpmn:exclusiveGateway id="Gateway_09ninrg" name="Approved?">
+        <bpmn:incoming>Flow_142y4bv</bpmn:incoming>
+        <bpmn:outgoing>Flow_0icmf9a</bpmn:outgoing>
+        <bpmn:outgoing>Flow_06qkfu5</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_142y4bv" sourceRef="UserTask_ManualCheck" targetRef="Gateway_09ninrg" />
+      <bpmn:sequenceFlow id="Flow_0icmf9a" sourceRef="Gateway_09ninrg" targetRef="EndEvent_Approved" />
+      <bpmn:sequenceFlow id="Flow_06qkfu5" sourceRef="Gateway_09ninrg" targetRef="EndEvent_Rejected" />
+    </bpmn:subProcess>
+    <bpmn:endEvent id="EndEvent_1" name="Complete">
+      <bpmn:incoming>Flow_1yv57hq</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="SubProcess_1" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="SubProcess_1" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_1yv57hq" sourceRef="SubProcess_1" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_0yoqc7h" sourceRef="StartEvent_1" targetRef="Activity_1sb586j" />
+    <bpmn:sequenceFlow id="Flow_1216uxe" sourceRef="Activity_1sb586j" targetRef="SubProcess_1" />
+    <bpmn:serviceTask id="Activity_1sb586j" name="Gather applications">
+      <bpmn:incoming>Flow_0yoqc7h</bpmn:incoming>
+      <bpmn:outgoing>Flow_1216uxe</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_multiinstance_loop_context">
+    <bpmndi:BPMNPlane id="BPMNPlane_multiinstance_loop_context" bpmnElement="BatchApprovalProcess">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="164" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="200" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1162" y="152" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1156" y="188" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ktjg4f_di" bpmnElement="Activity_1sb586j">
+        <dc:Bounds x="280" y="142" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubProcess_1_di" bpmnElement="SubProcess_1" isExpanded="true">
+        <dc:Bounds x="470" y="83" width="620" height="197" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_ReviewOutcome_di" bpmnElement="Gateway_ReviewOutcome" isMarkerVisible="true">
+        <dc:Bounds x="630" y="170" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="628" y="220" width="54" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Review_di" bpmnElement="UserTask_Review">
+        <dc:Bounds x="500" y="155" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_ManualCheck_di" bpmnElement="UserTask_ManualCheck">
+        <dc:Bounds x="740" y="155" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_09ninrg_di" bpmnElement="Gateway_09ninrg" isMarkerVisible="true">
+        <dc:Bounds x="905" y="170" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="903" y="223" width="54" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Rejected_di" bpmnElement="EndEvent_Rejected">
+        <dc:Bounds x="1012" y="177" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1008" y="220" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Approved_di" bpmnElement="EndEvent_Approved">
+        <dc:Bounds x="1012" y="103" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1006" y="139" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_097w7db_di" bpmnElement="Flow_097w7db">
+        <di:waypoint x="600" y="195" />
+        <di:waypoint x="630" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_GatewayToApproved_di" bpmnElement="Flow_GatewayToApproved">
+        <di:waypoint x="655" y="170" />
+        <di:waypoint x="655" y="121" />
+        <di:waypoint x="1012" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tvuyyg_di" bpmnElement="Flow_0tvuyyg">
+        <di:waypoint x="680" y="195" />
+        <di:waypoint x="740" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_142y4bv_di" bpmnElement="Flow_142y4bv">
+        <di:waypoint x="840" y="195" />
+        <di:waypoint x="905" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0icmf9a_di" bpmnElement="Flow_0icmf9a">
+        <di:waypoint x="930" y="170" />
+        <di:waypoint x="930" y="121" />
+        <di:waypoint x="1012" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06qkfu5_di" bpmnElement="Flow_06qkfu5">
+        <di:waypoint x="955" y="195" />
+        <di:waypoint x="1012" y="195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yv57hq_di" bpmnElement="Flow_1yv57hq">
+        <di:waypoint x="1090" y="170" />
+        <di:waypoint x="1162" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yoqc7h_di" bpmnElement="Flow_0yoqc7h">
+        <di:waypoint x="188" y="182" />
+        <di:waypoint x="280" y="182" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1216uxe_di" bpmnElement="Flow_1216uxe">
+        <di:waypoint x="380" y="182" />
+        <di:waypoint x="470" y="182" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

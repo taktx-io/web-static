@@ -1,0 +1,124 @@
+// Dark theme colors
+:host {
+  --primary-color: #00CFFF; // Bright cyan blue from logo
+  --primary-light: #4DDAFF;
+  --primary-dark: #00A3CC;
+  --text-on-primary: #1A1A1A;
+
+  --background-dark: #121212;
+  --surface-dark: #1E1E1E;
+  --card-dark: #252525;
+  --border-dark: #333333;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-disabled: rgba(255, 255, 255, 0.5);
+
+  // Additional grayscale palette
+  --gray-100: #F5F5F5;
+  --gray-200: #E0E0E0;
+  --gray-300: #CCCCCC;
+  --gray-400: #AAAAAA;
+  --gray-500: #888888;
+  --gray-600: #666666;
+  --gray-700: #444444;
+  --gray-800: #2A2A2A;
+  --gray-900: #212121;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+}
+
+.main-content {
+  flex: 1;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// Modern UI element styles
+.card {
+  background-color: var(--card-dark);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-on-primary);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--primary-light);
+  }
+}
+
+.section-divider {
+  border-top: 1px solid var(--border-dark);
+  margin: 2rem 0;
+}
+
+.accent-text {
+  color: var(--primary-color);
+}
+
+// Subtle blue accent for highlights
+.highlight {
+  border-left: 3px solid var(--primary-color);
+  padding-left: 1rem;
+}
+
+/* Initializing overlay shown before initial checks complete to avoid UI flash */
+.initializing-overlay {
+  position: fixed;
+  inset: 0;
+  background: #071827; /* match maintenance background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.initializing-overlay .init-box {
+  text-align: center;
+  padding: 24px;
+  max-width: 720px;
+}
+
+.initializing-overlay .init-box .logo {
+  margin-bottom: 16px;
+}
+
+.initializing-overlay h1 {
+  margin: 0 0 12px 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.initializing-overlay p {
+  margin: 0 0 18px 0;
+  color: rgba(255,255,255,0.9);
+}
+
+.initializing-overlay .btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 6px;
+  background: #00c0ff;
+  color: #042026;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}

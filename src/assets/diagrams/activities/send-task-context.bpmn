@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="OrderProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Order Placed">
+      <bpmn:outgoing>Flow_0aai6zo</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sendTask id="SendTask_1" name="Notify Shipping">
+      <bpmn:incoming>Flow_0aai6zo</bpmn:incoming>
+    </bpmn:sendTask>
+    <bpmn:userTask id="UserTask_1" name="Confirm Shipment">
+      <bpmn:outgoing>Flow_0yxtttf</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_1" name="Order Complete">
+      <bpmn:incoming>Flow_0yxtttf</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="SendTask_1" targetRef="UserTask_1" />
+    <bpmn:sequenceFlow id="Flow_0aai6zo" sourceRef="StartEvent_1" targetRef="SendTask_1" />
+    <bpmn:sequenceFlow id="Flow_0yxtttf" sourceRef="UserTask_1" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_2">
+    <bpmndi:BPMNPlane id="BPMNPlane_2" bpmnElement="OrderProcess">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="170" y="107" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="156" y="143" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SendTask_1_di" bpmnElement="SendTask_1">
+        <dc:Bounds x="270" y="85" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1_di" bpmnElement="UserTask_1">
+        <dc:Bounds x="420" y="85" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="570" y="107" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="549" y="143" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="370" y="125" />
+        <di:waypoint x="420" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0aai6zo_di" bpmnElement="Flow_0aai6zo">
+        <di:waypoint x="206" y="125" />
+        <di:waypoint x="270" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yxtttf_di" bpmnElement="Flow_0yxtttf">
+        <di:waypoint x="520" y="125" />
+        <di:waypoint x="570" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

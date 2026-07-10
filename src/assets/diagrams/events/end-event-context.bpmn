@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_end_event_context" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="PaymentProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Order Placed">
+      <bpmn:outgoing>Flow_069pmon</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="ServiceTask_1" name="Process Payment">
+      <bpmn:incoming>Flow_069pmon</bpmn:incoming>
+      <bpmn:outgoing>Flow_1m8ns2r</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_Error" name="Payment Failed">
+      <bpmn:incoming>Flow_1wnaao4</bpmn:incoming>
+      <bpmn:errorEventDefinition />
+    </bpmn:endEvent>
+    <bpmn:endEvent id="EndEvent_Success" name="Payment Complete">
+      <bpmn:incoming>Flow_141ig2y</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_1xdop5a" name="Result">
+      <bpmn:incoming>Flow_1m8ns2r</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wnaao4</bpmn:outgoing>
+      <bpmn:outgoing>Flow_141ig2y</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1wnaao4" name="Failed" sourceRef="Gateway_1xdop5a" targetRef="EndEvent_Error" />
+    <bpmn:sequenceFlow id="Flow_141ig2y" name="Ok" sourceRef="Gateway_1xdop5a" targetRef="EndEvent_Success" />
+    <bpmn:sequenceFlow id="Flow_069pmon" sourceRef="StartEvent_1" targetRef="ServiceTask_1" />
+    <bpmn:sequenceFlow id="Flow_1m8ns2r" sourceRef="ServiceTask_1" targetRef="Gateway_1xdop5a" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_end_event_context">
+    <bpmndi:BPMNPlane id="BPMNPlane_end_event_context" bpmnElement="PaymentProcess">
+      <bpmndi:BPMNShape id="EndEvent_Success_di" bpmnElement="EndEvent_Success">
+        <dc:Bounds x="552" y="107" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="546" y="143" width="48" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Error_di" bpmnElement="EndEvent_Error">
+        <dc:Bounds x="552" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="532" y="248" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1xdop5a_di" bpmnElement="Gateway_1xdop5a" isMarkerVisible="true">
+        <dc:Bounds x="415" y="100" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="434" y="83" width="32" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1_di" bpmnElement="ServiceTask_1">
+        <dc:Bounds x="260" y="85" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="172" y="107" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="143" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1wnaao4_di" bpmnElement="Flow_1wnaao4">
+        <di:waypoint x="440" y="150" />
+        <di:waypoint x="440" y="230" />
+        <di:waypoint x="552" y="230" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="475" y="213" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_141ig2y_di" bpmnElement="Flow_141ig2y">
+        <di:waypoint x="465" y="125" />
+        <di:waypoint x="552" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="501" y="107" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_069pmon_di" bpmnElement="Flow_069pmon">
+        <di:waypoint x="208" y="125" />
+        <di:waypoint x="260" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1m8ns2r_di" bpmnElement="Flow_1m8ns2r">
+        <di:waypoint x="360" y="125" />
+        <di:waypoint x="415" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

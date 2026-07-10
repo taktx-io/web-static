@@ -1,0 +1,12 @@
+/* Token styles for javaHighlight pipe */
+:host .taktx-code {
+  color: #e5e7eb !important; /* default light gray */
+  display: block;
+}
+:host pre code.taktx-code .tok-cmt { color: #9aa0a6 !important; }
+:host pre code.taktx-code .tok-str { color: #c3e88d !important; }
+:host pre code.taktx-code .tok-anno { color: #82aaff !important; }
+:host pre code.taktx-code .tok-kwd { color: #c792ea !important; }
+:host pre code.taktx-code .tok-type { color: #89ddff !important; }
+:host pre code.taktx-code .tok-num { color: #f78c6c !important; }
+/* feature-specific styles if needed */

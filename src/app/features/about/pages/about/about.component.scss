@@ -1,0 +1,44 @@
+/* About page styles */
+:host {
+  display: block;
+}
+
+.hero-bg {
+  background: radial-gradient(1200px 400px at top left, rgba(0, 207, 255, 0.08), transparent),
+              radial-gradient(800px 300px at bottom right, rgba(0, 207, 255, 0.06), transparent);
+}
+
+h1, h2, h3 {
+  color: #fff;
+}
+
+.text-primary {
+  color: #00CFFF;
+}
+
+.bg-primary {
+  background-color: #00CFFF;
+}
+
+/* Timeline dots animation */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.85; }
+}
+
+.timeline-dot {
+  animation: pulse 2s infinite;
+}
+
+/* Cards */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}

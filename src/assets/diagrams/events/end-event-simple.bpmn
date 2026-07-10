@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:endEvent id="Event_0y0lf5k" name="End Event" />
+    <bpmn:endEvent id="Event_1vkgqea" name="Error End Event">
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0e5qtvf" />
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Event_0mawy9y" name="Signal End Event">
+      <bpmn:signalEventDefinition id="SignalEventDefinition_0dearjh" />
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Event_18o876l" name="Message End Event">
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0q828p4" />
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Event_1e4k3z2" name="Terminate End Event">
+      <bpmn:terminateEventDefinition id="TerminateEventDefinition_0yi401h" />
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Event_0dhlsrb" name="Escalation End Event">
+      <bpmn:escalationEventDefinition id="EscalationEventDefinition_0ycaotf" />
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="Event_0y0lf5k_di" bpmnElement="Event_0y0lf5k">
+        <dc:Bounds x="162" y="42" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="155" y="85" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1vkgqea_di" bpmnElement="Event_1vkgqea">
+        <dc:Bounds x="272" y="42" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="251" y="85" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0mawy9y_di" bpmnElement="Event_0mawy9y">
+        <dc:Bounds x="392" y="42" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="368" y="85" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18o876l_di" bpmnElement="Event_18o876l">
+        <dc:Bounds x="512" y="42" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="496" y="85" width="68" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1e4k3z2_di" bpmnElement="Event_1e4k3z2">
+        <dc:Bounds x="652" y="42" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="635" y="85" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0dhlsrb_di" bpmnElement="Event_0dhlsrb">
+        <dc:Bounds x="762" y="42" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="743" y="85" width="74" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

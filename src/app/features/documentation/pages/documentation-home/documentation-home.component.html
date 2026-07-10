@@ -1,0 +1,205 @@
+<div class="min-h-screen bg-gray-900 text-white">
+  <!-- Hero Section -->
+  <section class="bg-gray-800 py-16 mb-12 border-b border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-5xl font-bold text-white mb-6">TaktX Documentation</h1>
+        <p class="text-xl text-gray-300 mb-8">
+          Learn how to use the TaktX BPMN engine available with its features.
+        </p>
+        <div class="bg-blue-600 h-1 w-24 mb-8"></div>
+
+        <!-- Search Bar -->
+        <div class="max-w-2xl">
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Search documentation..."
+              [(ngModel)]="searchQuery"
+              (ngModelChange)="performSearch()"
+              class="w-full px-5 py-3 pl-12 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-primary focus:outline-none"
+            >
+            <button
+              (click)="performSearch()"
+              class="absolute inset-y-0 left-0 px-4 flex items-center text-gray-400 hover:text-primary"
+              [disabled]="!searchQuery.trim() || searchQuery.trim().length < 1"
+            >
+              <i class="fas fa-search text-lg"></i>
+            </button>
+            <button
+              *ngIf="searchQuery"
+              (click)="clearSearch()"
+              class="absolute inset-y-0 right-0 px-4 flex items-center text-gray-400 hover:text-primary"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <p class="text-sm text-gray-400 mt-2">
+            <i class="fas fa-info-circle mr-1"></i> Search across all documentation sections (minimum 3 characters)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Results Panel (only shown when results exist) -->
+  <div class="container mx-auto px-6 mb-12" *ngIf="searchResults.length > 0">
+    <div class="max-w-6xl mx-auto">
+      <div class="bg-gray-800 rounded-lg p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-bold">Search Results</h2>
+          <button (click)="clearSearch()" class="text-gray-400 hover:text-primary">
+            <i class="fas fa-times"></i> Clear
+          </button>
+        </div>
+
+        <div *ngIf="searchResults.length > 0">
+          <p class="text-gray-400 mb-4">Found {{searchResults.length}} result(s) for "{{searchQuery}}"</p>
+
+          <ul class="space-y-4">
+            <li *ngFor="let result of searchResults"
+                class="border border-gray-700 rounded-lg p-4 hover:bg-gray-700 transition-colors">
+              <a (click)="navigateToSearchResult(result)" class="block cursor-pointer">
+                <h3 class="text-lg font-medium text-primary mb-1">{{ result.title }}</h3>
+                <div class="text-sm text-gray-300" [innerHTML]="result.highlightedText"></div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Status Banner (if admin) -->
+  <div class="container mx-auto px-6 mb-12">
+    <div class="max-w-6xl mx-auto">
+      <div *ngIf="isAdmin" class="bg-green-800 text-white p-4 mb-8 rounded-lg">
+        <div class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Admin privileges detected. You can edit and manage documentation content.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div class="container mx-auto px-6" *ngIf="isLoading">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex justify-center items-center py-12">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div class="container mx-auto px-6" *ngIf="!isLoading && rootSections.length === 0">
+    <div class="max-w-6xl mx-auto">
+      <div class="bg-red-900 text-white p-6 rounded-lg mb-12">
+        <h3 class="text-xl font-bold mb-2">No Documentation Found</h3>
+        <p>No documentation root sections found. Please check your connection to the backend or contact the
+          administrator.
+        </p>
+        <button *ngIf="isAdmin" (click)="navigateToCreateRootSection()"
+          class="text-primary hover:text-blue-400 transition-colors duration-200" title="Add New Root Section">
+          <i class="fas fa-plus-circle text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Documentation Root Sections -->
+  <div class="container mx-auto px-6 pb-16" *ngIf="!isLoading && rootSections.length > 0">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold">Browse Documentation</h2>
+
+        <!-- Add New Root Section Button (Admin Only) - Now just a plus icon -->
+        <button *ngIf="isAdmin" (click)="navigateToCreateRootSection()"
+          class="text-primary hover:text-blue-400 transition-colors duration-200" title="Add New Root Section">
+          <i class="fas fa-plus-circle text-xl"></i>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <ng-container *ngFor="let rootSection of rootSections">
+          <div *ngIf="rootSection.isActive || isAdmin"
+            class="bg-gray-800 rounded-lg shadow-lg p-6 transition-all duration-200 hover:shadow-xl hover:transform hover:-translate-y-1">
+
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold text-white flex items-center">
+                <span *ngIf="rootSection.icon" class="mr-2 text-primary">
+                  <i class="fas fa-{{rootSection.icon}}"></i>
+                </span>
+                {{rootSection.title}}
+                <span *ngIf="!rootSection.isActive" class="ml-2 text-sm px-2 py-1 bg-gray-700 text-gray-400 rounded">
+                  Inactive
+                </span>
+              </h3>
+
+              <!-- Admin Actions -->
+              <div *ngIf="isAdmin" class="flex space-x-3">
+                <!-- Edit Button -->
+                <button (click)="navigateToEdit(rootSection.id)"
+                  class="text-primary hover:text-blue-400 transition-colors duration-200" title="Edit Root Section">
+                  <i class="fas fa-edit"></i>
+                </button>
+
+                <!-- Delete Button -->
+                <button *ngIf="deletingRootSectionId !== rootSection.id"
+                  (click)="confirmDeleteRootSection(rootSection.id, $event)"
+                  class="text-gray-400 hover:text-red-400 transition-colors duration-200" title="Delete Root Section">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+
+                <!-- Delete Confirmation -->
+                <div *ngIf="deletingRootSectionId === rootSection.id"
+                  class="flex space-x-1 bg-gray-900 p-1 rounded border border-gray-700">
+                  <span class="text-white text-sm mr-1">Confirm?</span>
+                  <button (click)="deleteRootSection(rootSection.id, $event)"
+                    class="text-green-500 hover:text-green-400 text-xs">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button (click)="cancelDelete($event)" class="text-red-500 hover:text-red-400 text-xs">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-gray-300 mb-6 h-16 overflow-hidden">
+              {{rootSection.description}}
+            </p>
+
+            <div class="mt-auto">
+              <button [routerLink]="['/documentation', rootSection.slug]"
+                class="w-full px-4 py-3 bg-primary text-gray-900 rounded font-bold hover:opacity-90 transition-all duration-200 flex items-center justify-center">
+                <span>Explore</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Empty State for Admins -->
+      <div *ngIf="rootSections.length === 0 && isAdmin" class="bg-gray-800 rounded-lg p-8 text-center">
+        <h3 class="text-2xl font-bold text-white mb-4">No Root Sections Yet</h3>
+        <p class="text-gray-300 mb-6">
+          As an admin, you can create the first documentation root section to get started.
+        </p>
+        <button (click)="navigateToCreateRootSection()"
+          class="inline-flex items-center text-primary hover:text-blue-400 transition-colors duration-200 mx-auto">
+          <i class="fas fa-plus-circle text-xl mr-2"></i>
+          Create First Root Section
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

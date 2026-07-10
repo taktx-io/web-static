@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_intermediate_throw_event_context" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="SystemNotificationProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Trigger" />
+    <bpmn:intermediateThrowEvent id="ThrowEvent_1" name="Send Notification">
+      <bpmn:outgoing>Flow_1uar7te</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:serviceTask id="ServiceTask_1" name="Continue Process">
+      <bpmn:incoming>Flow_1uar7te</bpmn:incoming>
+      <bpmn:outgoing>Flow_1lr5pel</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_1" name="Complete">
+      <bpmn:incoming>Flow_1lr5pel</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="ThrowEvent_1" />
+    <bpmn:sequenceFlow id="Flow_1uar7te" sourceRef="ThrowEvent_1" targetRef="ServiceTask_1" />
+    <bpmn:sequenceFlow id="Flow_1lr5pel" sourceRef="ServiceTask_1" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_intermediate_throw_event_context">
+    <bpmndi:BPMNPlane id="BPMNPlane_intermediate_throw_event_context" bpmnElement="SystemNotificationProcess">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="160" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="161" y="138" width="35" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="592" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="586" y="138" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ThrowEvent_1_di" bpmnElement="ThrowEvent_1">
+        <dc:Bounds x="281" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="257" y="138" width="84" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1_di" bpmnElement="ServiceTask_1">
+        <dc:Bounds x="407" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="196" y="120" />
+        <di:waypoint x="281" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uar7te_di" bpmnElement="Flow_1uar7te">
+        <di:waypoint x="317" y="120" />
+        <di:waypoint x="407" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lr5pel_di" bpmnElement="Flow_1lr5pel">
+        <di:waypoint x="507" y="120" />
+        <di:waypoint x="592" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

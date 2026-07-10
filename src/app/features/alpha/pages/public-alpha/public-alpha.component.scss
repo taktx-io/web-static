@@ -1,0 +1,7 @@
+/* Public Alpha page styles */
+:host { display: block; }
+
+.text-primary { color: #00CFFF; }
+.bg-primary { background-color: #00CFFF; }
+
+.card { border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); }

@@ -1,0 +1,124 @@
+<div class="container mx-auto px-6 py-12">
+  <!-- Loading state -->
+  <div *ngIf="loading" class="flex justify-center items-center py-16">
+    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+  </div>
+
+  <!-- Not found state -->
+  <div *ngIf="notFound" class="bg-gray-800 rounded-lg p-8 text-center">
+    <h1 class="text-3xl font-bold text-white mb-4">Documentation Not Found</h1>
+    <p class="text-gray-300 mb-6">
+      The documentation root section you're looking for doesn't exist or has been moved.
+    </p>
+    <a routerLink="/documentation"
+      class="inline-block px-6 py-3 bg-primary text-gray-900 rounded-md hover:opacity-90 transition-all duration-200">
+      Go Back to Documentation
+    </a>
+  </div>
+
+  <!-- Root Section content -->
+  <div *ngIf="!loading && !notFound && rootSection">
+    <div class="mb-8">
+      <a routerLink="/documentation" class="text-gray-400 hover:text-primary mb-4 inline-flex items-center">
+        <i class="fas fa-arrow-left mr-2"></i> Back to Documentation
+      </a>
+
+      <h1 class="text-4xl font-bold text-white mt-4 mb-6 flex items-center">
+        <span *ngIf="rootSection.icon" class="mr-3 text-primary text-3xl">
+          <i class="fas fa-{{rootSection.icon}}"></i>
+        </span>
+        <span class="cursor-pointer hover:text-primary transition-colors" (click)="showRootSection()">
+          {{rootSection.title}}
+        </span>
+        <span *ngIf="!rootSection.isActive" class="ml-2 text-sm px-2 py-1 bg-gray-700 text-gray-400 rounded">
+          Inactive
+        </span>
+      </h1>
+    </div>
+
+    <!-- Display a message when functional cookies are disabled -->
+    <div *ngIf="functionalCookiesDisabled" class="cookie-notice mb-4 p-3 bg-blue-100 text-blue-800 rounded text-sm">
+      <div class="flex items-center">
+        <span class="material-icons mr-2 text-blue-600">info</span>
+        <div>
+          <strong>Limited personalization:</strong> Your documentation navigation preferences won't be saved between visits because functional cookies are disabled.
+          <a routerLink="/cookies" class="underline">Manage cookie settings</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two column layout -->
+    <div class="flex flex-col md:flex-row gap-6">
+      <!-- Left sidebar with section navigation -->
+      <div class="w-full md:w-1/4 lg:w-1/5 bg-gray-800 rounded-lg p-4 h-fit sticky-nav">
+        <!-- Search box -->
+        <div class="mb-4">
+          <div class="relative">
+            <input type="text" placeholder="Search documentation..." [(ngModel)]="searchQuery"
+              (ngModelChange)="searchDocumentation()"
+              class="w-full px-4 py-2 pl-10 bg-gray-700 border border-gray-600 rounded text-white focus:border-primary focus:outline-none">
+            <button (click)="searchDocumentation()"
+              class="absolute inset-y-0 left-0 px-3 flex items-center text-gray-400 hover:text-primary"
+              [disabled]="!searchQuery.trim()">
+              <i class="fas fa-search"></i>
+            </button>
+            <button *ngIf="searchQuery" (click)="clearSearch()"
+              class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-primary">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="toc-header font-medium text-gray-300 border-b border-gray-700 pb-2 flex justify-between items-center">
+          <span>{{ searchResults.length > 0 ? 'Search Results' : 'Table of Contents' }}</span>
+          <!-- Add section button (only for admin users) -->
+          <button *ngIf="isAdmin" class="text-gray-400 hover:text-primary focus:outline-none"
+            (click)="onAddRootSection($event)">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+
+        <!-- Search results (when there are any) -->
+        <div *ngIf="searchResults.length > 0" class="mt-3">
+          <ul class="space-y-2">
+            <li *ngFor="let result of searchResults" class="hover:bg-gray-700 rounded-md transition-colors">
+              <a (click)="selectSearchResult(result)" class="block p-2 cursor-pointer">
+                <div class="text-sm text-white font-medium">{{ result.title }}</div>
+                <div class="text-xs text-gray-400 truncate" [innerHTML]="result.highlightedText"></div>
+              </a>
+            </li>
+          </ul>
+          <div *ngIf="searchResults.length > 0" class="mt-4 text-center">
+            <button (click)="clearSearch()" class="text-sm text-gray-400 hover:text-primary">
+              Back to Table of Contents
+            </button>
+          </div>
+        </div>
+
+        <!-- Section tree component (when not searching) -->
+        <app-doc-section-tree *ngIf="sections.length > 0 && searchResults.length === 0" [sections]="sections"
+          [selectedSectionId]="selectedSection?.id?.toString() || null" [sectionPaths]="[]" [isAdmin]="isAdmin"
+          [expandedSections]="expandedSections" (select)="selectSection($event)" (addSection)="onAddSection($event)"
+          (editSection)="onEditSection($event)" (toggleExpand)="onSectionToggled($event)">
+        </app-doc-section-tree>
+
+        <div *ngIf="sections.length === 0 && searchResults.length === 0" class="text-gray-400 text-sm p-3">
+          No sections available.
+        </div>
+      </div>
+
+      <!-- Right side content area -->
+      <div class="w-full md:w-3/4 lg:w-4/5">
+        <!-- Selected section content -->
+        <div *ngIf="selectedSection" class="bg-gray-800 rounded-lg p-6">
+          <div *ngIf="sectionContent" [innerHTML]="sectionContent.content | safeHtml" class="doc-content"></div>
+        </div>
+
+        <!-- Root section content when no section is selected -->
+        <div *ngIf="showRootSectionContent && rootSection" class="bg-gray-800 rounded-lg p-6">
+          <div *ngIf="rootSectionContent" [innerHTML]="rootSectionContent.content | safeHtml" class="doc-content"></div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,10 @@
+/* Why TaktX page styles */
+:host {
+  display: block;
+}
+/* Subtle radial glow behind the hero */
+.hero-section {
+  background:
+    radial-gradient(900px 400px at 50% 0%, rgba(0, 207, 255, 0.06), transparent),
+    #0d1117;
+}

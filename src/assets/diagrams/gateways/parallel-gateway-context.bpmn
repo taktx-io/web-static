@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_parallel_gateway_context" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="ParallelChecksProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_0k7gqpe</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:parallelGateway id="Gateway_Fork">
+      <bpmn:incoming>Flow_0k7gqpe</bpmn:incoming>
+      <bpmn:outgoing>Flow_18xcife</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0cy6oxn</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:userTask id="UserTask_Background" name="Background Check">
+      <bpmn:incoming>Flow_18xcife</bpmn:incoming>
+      <bpmn:outgoing>Flow_08h84i3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Credit" name="Credit Check">
+      <bpmn:incoming>Flow_0cy6oxn</bpmn:incoming>
+      <bpmn:outgoing>Flow_04krsmj</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:parallelGateway id="Gateway_Join" name="Join">
+      <bpmn:incoming>Flow_08h84i3</bpmn:incoming>
+      <bpmn:incoming>Flow_04krsmj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ga4g9m</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:endEvent id="EndEvent_1" name="Complete">
+      <bpmn:incoming>Flow_1ga4g9m</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0k7gqpe" sourceRef="StartEvent_1" targetRef="Gateway_Fork" />
+    <bpmn:sequenceFlow id="Flow_18xcife" sourceRef="Gateway_Fork" targetRef="UserTask_Background" />
+    <bpmn:sequenceFlow id="Flow_08h84i3" sourceRef="UserTask_Background" targetRef="Gateway_Join" />
+    <bpmn:sequenceFlow id="Flow_1ga4g9m" sourceRef="Gateway_Join" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_04krsmj" sourceRef="UserTask_Credit" targetRef="Gateway_Join" />
+    <bpmn:sequenceFlow id="Flow_0cy6oxn" sourceRef="Gateway_Fork" targetRef="UserTask_Credit" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_parallel_gateway_context">
+    <bpmndi:BPMNPlane id="BPMNPlane_parallel_gateway_context" bpmnElement="ParallelChecksProcess">
+      <bpmndi:BPMNShape id="UserTask_Background_di" bpmnElement="UserTask_Background">
+        <dc:Bounds x="356" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Credit_di" bpmnElement="UserTask_Credit">
+        <dc:Bounds x="356" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Fork_di" bpmnElement="Gateway_Fork">
+        <dc:Bounds x="256" y="167" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="104" y="95" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Join_di" bpmnElement="Gateway_Join">
+        <dc:Bounds x="506" y="167" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="474.5" y="185" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="606" y="174" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="600" y="210" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="174" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="210" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0k7gqpe_di" bpmnElement="Flow_0k7gqpe">
+        <di:waypoint x="188" y="192" />
+        <di:waypoint x="256" y="192" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18xcife_di" bpmnElement="Flow_18xcife">
+        <di:waypoint x="281" y="167" />
+        <di:waypoint x="281" y="120" />
+        <di:waypoint x="356" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08h84i3_di" bpmnElement="Flow_08h84i3">
+        <di:waypoint x="456" y="120" />
+        <di:waypoint x="531" y="120" />
+        <di:waypoint x="531" y="167" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ga4g9m_di" bpmnElement="Flow_1ga4g9m">
+        <di:waypoint x="556" y="192" />
+        <di:waypoint x="606" y="192" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04krsmj_di" bpmnElement="Flow_04krsmj">
+        <di:waypoint x="456" y="290" />
+        <di:waypoint x="531" y="290" />
+        <di:waypoint x="531" y="217" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cy6oxn_di" bpmnElement="Flow_0cy6oxn">
+        <di:waypoint x="281" y="217" />
+        <di:waypoint x="281" y="290" />
+        <di:waypoint x="356" y="290" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

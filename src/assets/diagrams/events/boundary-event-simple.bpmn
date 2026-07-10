@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1bp3si4" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <bpmn:process id="Process_1wr7bvo" isExecutable="true">
+    <bpmn:task id="Activity_013reoh" />
+    <bpmn:task id="Activity_17oq78k" />
+    <bpmn:task id="Activity_1j86rto" />
+    <bpmn:task id="Activity_0ck5tdc" />
+    <bpmn:task id="Activity_0gcwerp" />
+    <bpmn:boundaryEvent id="Event_0a9v895" name="Message boundary event" attachedToRef="Activity_013reoh">
+      <bpmn:messageEventDefinition id="MessageEventDefinition_162d608" />
+    </bpmn:boundaryEvent>
+    <bpmn:boundaryEvent id="Event_0n5z3og" name="Timer boundary event" attachedToRef="Activity_17oq78k">
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1nvqpxy" />
+    </bpmn:boundaryEvent>
+    <bpmn:boundaryEvent id="Event_188prk7" name="Escalation boundary event" attachedToRef="Activity_1j86rto">
+      <bpmn:escalationEventDefinition id="EscalationEventDefinition_1leo5v3" />
+    </bpmn:boundaryEvent>
+    <bpmn:boundaryEvent id="Event_1ueh8co" name="Error boundary event" attachedToRef="Activity_0ck5tdc">
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1x1tec3" />
+    </bpmn:boundaryEvent>
+    <bpmn:boundaryEvent id="Event_0p170ul" name="Signal boundary event" attachedToRef="Activity_0gcwerp">
+      <bpmn:signalEventDefinition id="SignalEventDefinition_114uqov" />
+    </bpmn:boundaryEvent>
+    <bpmn:task id="Activity_1csq2vt" />
+    <bpmn:boundaryEvent id="Event_0qysufe" name="Message boundary event (non interrupting)" cancelActivity="false" attachedToRef="Activity_1csq2vt">
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0gs3wf7" />
+    </bpmn:boundaryEvent>
+    <bpmn:task id="Activity_0lwr0yl" />
+    <bpmn:boundaryEvent id="Event_0dvkdas" name="Timer boundary event (non interrupting)" cancelActivity="false" attachedToRef="Activity_0lwr0yl">
+      <bpmn:timerEventDefinition id="TimerEventDefinition_11jd0rv" />
+    </bpmn:boundaryEvent>
+    <bpmn:task id="Activity_0miar37" />
+    <bpmn:boundaryEvent id="Event_1avgeyi" name="Escalation boundary event (non interrupting)" cancelActivity="false" attachedToRef="Activity_0miar37">
+      <bpmn:escalationEventDefinition id="EscalationEventDefinition_1nqzlsu" />
+    </bpmn:boundaryEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1wr7bvo">
+      <bpmndi:BPMNShape id="BPMNShape_0mv5lz4" bpmnElement="Activity_013reoh">
+        <dc:Bounds x="140" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0bpw3vz" bpmnElement="Activity_17oq78k">
+        <dc:Bounds x="400" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1cp5bqi" bpmnElement="Activity_1j86rto">
+        <dc:Bounds x="140" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1v6egz1" bpmnElement="Activity_0ck5tdc">
+        <dc:Bounds x="400" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1sbt5l8" bpmnElement="Activity_0gcwerp">
+        <dc:Bounds x="530" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1ju0ua4" bpmnElement="Activity_1csq2vt">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1b2kq72" bpmnElement="Activity_0lwr0yl">
+        <dc:Bounds x="530" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0wxujrv" bpmnElement="Activity_0miar37">
+        <dc:Bounds x="270" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1yzkiwq_di" bpmnElement="Event_1avgeyi">
+        <dc:Bounds x="302" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="279" y="335" width="84" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ui7gg5_di" bpmnElement="Event_0dvkdas">
+        <dc:Bounds x="562" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="542" y="185" width="77" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_01enzrd_di" bpmnElement="Event_0qysufe">
+        <dc:Bounds x="302" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="278" y="185" width="84" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1kh1ebn_di" bpmnElement="Event_0p170ul">
+        <dc:Bounds x="562" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="540" y="335" width="80" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0zbgxyy_di" bpmnElement="Event_1ueh8co">
+        <dc:Bounds x="432" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="413" y="335" width="74" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0d1golf_di" bpmnElement="Event_188prk7">
+        <dc:Bounds x="172" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="153" y="335" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1muaqmc_di" bpmnElement="Event_0n5z3og">
+        <dc:Bounds x="432" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="412" y="185" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0zx50z5_di" bpmnElement="Event_0a9v895">
+        <dc:Bounds x="172" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="152" y="185" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

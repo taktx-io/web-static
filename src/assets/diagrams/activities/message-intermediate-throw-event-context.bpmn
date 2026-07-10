@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_4" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="PartnerNotificationProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Request Received">
+      <bpmn:outgoing>Flow_12hmsgm</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="UserTask_1" name="Review Request">
+      <bpmn:incoming>Flow_12hmsgm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ukrgvt</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:intermediateThrowEvent id="MessageThrow_1" name="Notify Partner">
+      <bpmn:incoming>Flow_1ukrgvt</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tjq2co</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:serviceTask id="ServiceTask_1" name="Process Request">
+      <bpmn:incoming>Flow_0tjq2co</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jp2xqj</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_1" name="Complete">
+      <bpmn:incoming>Flow_0jp2xqj</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_12hmsgm" sourceRef="StartEvent_1" targetRef="UserTask_1" />
+    <bpmn:sequenceFlow id="Flow_1ukrgvt" sourceRef="UserTask_1" targetRef="MessageThrow_1" />
+    <bpmn:sequenceFlow id="Flow_0tjq2co" sourceRef="MessageThrow_1" targetRef="ServiceTask_1" />
+    <bpmn:sequenceFlow id="Flow_0jp2xqj" sourceRef="ServiceTask_1" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_4">
+    <bpmndi:BPMNPlane id="BPMNPlane_4" bpmnElement="PartnerNotificationProcess">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="180" y="107" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="153" y="143" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1_di" bpmnElement="UserTask_1">
+        <dc:Bounds x="280" y="85" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1_di" bpmnElement="ServiceTask_1">
+        <dc:Bounds x="530" y="85" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="MessageThrow_1_di" bpmnElement="MessageThrow_1">
+        <dc:Bounds x="430" y="107" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="414" y="143" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="680" y="107" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="674" y="143" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_12hmsgm_di" bpmnElement="Flow_12hmsgm">
+        <di:waypoint x="216" y="125" />
+        <di:waypoint x="280" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ukrgvt_di" bpmnElement="Flow_1ukrgvt">
+        <di:waypoint x="380" y="125" />
+        <di:waypoint x="430" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tjq2co_di" bpmnElement="Flow_0tjq2co">
+        <di:waypoint x="466" y="125" />
+        <di:waypoint x="530" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jp2xqj_di" bpmnElement="Flow_0jp2xqj">
+        <di:waypoint x="630" y="125" />
+        <di:waypoint x="680" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

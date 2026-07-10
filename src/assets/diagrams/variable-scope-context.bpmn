@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_variable_scope_context" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="VariableScopeExample" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start" />
+    <bpmn:subProcess id="SubProcess_Payment" name="Payment Subprocess">
+      <bpmn:outgoing>Flow_0ea26ym</bpmn:outgoing>
+      <bpmn:startEvent id="SubStart_Payment" name="Start Payment">
+        <bpmn:outgoing>Flow_0k2fxj9</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:subProcess id="SubProcess_Fraud" name="Fraud Check Subprocess">
+        <bpmn:incoming>Flow_1ewggnh</bpmn:incoming>
+        <bpmn:outgoing>Flow_050bdgy</bpmn:outgoing>
+        <bpmn:startEvent id="SubStart_Fraud" name="Start Fraud Check">
+          <bpmn:outgoing>Flow_0vxux8i</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:endEvent id="SubEnd_Fraud" name="Fraud Check Done">
+          <bpmn:incoming>Flow_1nrl3j3</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:userTask id="UserTask_Fraud" name="Check Fraud">
+          <bpmn:incoming>Flow_0vxux8i</bpmn:incoming>
+          <bpmn:outgoing>Flow_1nrl3j3</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:sequenceFlow id="Flow_0vxux8i" sourceRef="SubStart_Fraud" targetRef="UserTask_Fraud" />
+        <bpmn:sequenceFlow id="Flow_1nrl3j3" sourceRef="UserTask_Fraud" targetRef="SubEnd_Fraud" />
+      </bpmn:subProcess>
+      <bpmn:endEvent id="SubEnd_Payment" name="Payment Done">
+        <bpmn:incoming>Flow_050bdgy</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:userTask id="UserTask_Payment" name="Process Payment">
+        <bpmn:incoming>Flow_0k2fxj9</bpmn:incoming>
+        <bpmn:outgoing>Flow_1ewggnh</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:sequenceFlow id="Flow_050bdgy" sourceRef="SubProcess_Fraud" targetRef="SubEnd_Payment" />
+      <bpmn:sequenceFlow id="Flow_1ewggnh" sourceRef="UserTask_Payment" targetRef="SubProcess_Fraud" />
+      <bpmn:sequenceFlow id="Flow_0k2fxj9" sourceRef="SubStart_Payment" targetRef="UserTask_Payment" />
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="SubProcess_Payment" />
+    <bpmn:endEvent id="EndEvent_1" name="End">
+      <bpmn:incoming>Flow_0ea26ym</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0ea26ym" sourceRef="SubProcess_Payment" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_variable_scope_context">
+    <bpmndi:BPMNPlane id="BPMNPlane_variable_scope_context" bpmnElement="VariableScopeExample">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="228" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1012" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1020" y="228" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubProcess_Payment_di" bpmnElement="SubProcess_Payment" isExpanded="true">
+        <dc:Bounds x="262" y="77" width="688" height="265" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubStart_Payment_di" bpmnElement="SubStart_Payment">
+        <dc:Bounds x="282" y="174" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="265" y="215" width="70" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubEnd_Payment_di" bpmnElement="SubEnd_Payment">
+        <dc:Bounds x="862" y="174" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="843" y="215" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07afkrc_di" bpmnElement="UserTask_Payment">
+        <dc:Bounds x="350" y="152" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubProcess_Fraud_di" bpmnElement="SubProcess_Fraud" isExpanded="true">
+        <dc:Bounds x="490" y="112" width="340" height="160" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubEnd_Fraud_di" bpmnElement="SubEnd_Fraud">
+        <dc:Bounds x="762" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="749" y="208" width="63" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubStart_Fraud_di" bpmnElement="SubStart_Fraud">
+        <dc:Bounds x="532" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="505" y="208" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1obmonh_di" bpmnElement="UserTask_Fraud">
+        <dc:Bounds x="610" y="150" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1nrl3j3_di" bpmnElement="Flow_1nrl3j3">
+        <di:waypoint x="710" y="190" />
+        <di:waypoint x="762" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vxux8i_di" bpmnElement="Flow_0vxux8i">
+        <di:waypoint x="568" y="190" />
+        <di:waypoint x="610" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0k2fxj9_di" bpmnElement="Flow_0k2fxj9">
+        <di:waypoint x="318" y="192" />
+        <di:waypoint x="350" y="192" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_050bdgy_di" bpmnElement="Flow_050bdgy">
+        <di:waypoint x="830" y="192" />
+        <di:waypoint x="862" y="192" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ewggnh_di" bpmnElement="Flow_1ewggnh">
+        <di:waypoint x="450" y="192" />
+        <di:waypoint x="490" y="192" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="188" y="211" />
+        <di:waypoint x="262" y="211" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ea26ym_di" bpmnElement="Flow_0ea26ym">
+        <di:waypoint x="950" y="210" />
+        <di:waypoint x="1012" y="210" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

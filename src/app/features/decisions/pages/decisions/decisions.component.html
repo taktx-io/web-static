@@ -1,0 +1,331 @@
+<!-- ─────────────────────────────────────────────────────────────
+     Section 1 — Intro
+──────────────────────────────────────────────────────────────── -->
+<section class="bg-gray-950 py-20 border-b border-gray-800">
+  <div class="container mx-auto px-4 max-w-4xl text-center">
+
+    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium mb-6">
+      <span class="material-symbols-outlined text-base">table_chart</span>
+      Available in open source engine &amp; community console — no restrictions
+    </span>
+
+    <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-5 leading-tight">
+      Model decisions.<br>Execute at scale.
+    </h1>
+    <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-4">
+      TaktX supports DMN decision modeling alongside BPMN process execution.
+      Decisions are evaluated inline within the engine, without external services or added latency.
+    </p>
+    <p class="text-sm text-gray-500 max-w-2xl mx-auto mb-10">
+      In many modern architectures, decision logic is deployed as a separate service.
+      TaktX keeps process and decision execution in a single runtime while remaining fully scalable.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://github.com/taktx-io/quickstart" target="_blank" rel="noopener noreferrer"
+        class="px-6 py-3 bg-primary hover:brightness-90 text-gray-900 font-bold rounded-md flex items-center gap-2 justify-center transition-all duration-200">
+        <span class="material-symbols-outlined">play_arrow</span>
+        Get started
+      </a>
+      <a routerLink="/features"
+        class="px-6 py-3 bg-transparent hover:bg-gray-800 text-white font-bold rounded-md flex items-center gap-2 justify-center transition-all duration-200 border border-gray-600 hover:border-primary">
+        <span class="material-symbols-outlined">featured_play_list</span>
+        All features
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────────────────────
+     Section 2 — Supported features
+──────────────────────────────────────────────────────────────── -->
+<section class="bg-gray-900 py-16 border-b border-gray-800">
+  <div class="container mx-auto px-4 max-w-4xl">
+
+    <h2 class="text-2xl font-bold text-white text-center mb-3">Supported features</h2>
+    <p class="text-sm text-gray-400 text-center mb-10 max-w-xl mx-auto">
+      Available in both the open source engine and the community console without restrictions.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+      <div class="bg-gray-800 rounded-xl border border-gray-700 p-5 hover:border-primary/30 transition-all duration-200">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="material-symbols-outlined text-primary">table_chart</span>
+          <h3 class="text-white font-semibold">DMN decision tables</h3>
+        </div>
+        <p class="text-gray-400 text-sm">Standard DMN 1.3 decision tables evaluated inline within the process engine.</p>
+      </div>
+
+      <div class="bg-gray-800 rounded-xl border border-gray-700 p-5 hover:border-primary/30 transition-all duration-200">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="material-symbols-outlined text-primary">account_tree</span>
+          <h3 class="text-white font-semibold">Decision Requirements Graph (DRG)</h3>
+        </div>
+        <p class="text-gray-400 text-sm">Compose multiple decision tables into dependency graphs for structured, reusable decision logic.</p>
+      </div>
+
+      <div class="bg-gray-800 rounded-xl border border-gray-700 p-5 hover:border-primary/30 transition-all duration-200">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="material-symbols-outlined text-primary">code</span>
+          <h3 class="text-white font-semibold">FEEL expressions</h3>
+        </div>
+        <p class="text-gray-400 text-sm">FEEL (Friendly Enough Expression Language) is the only supported expression language — consistent and deterministic across all decision definitions.</p>
+      </div>
+
+      <div class="bg-gray-800 rounded-xl border border-gray-700 p-5 hover:border-primary/30 transition-all duration-200">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="material-symbols-outlined text-primary">output</span>
+          <h3 class="text-white font-semibold">Deterministic result mapping</h3>
+        </div>
+        <p class="text-gray-400 text-sm">Single output maps to a scalar value. Multiple outputs map to a structured context object. No ambiguity, no side effects.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────────────────────
+     Section 2b — Screenshots
+──────────────────────────────────────────────────────────────── -->
+<section class="bg-gray-950 py-16 border-b border-gray-800">
+  <div class="container mx-auto px-4 max-w-5xl">
+
+    <h2 class="text-2xl font-bold text-white text-center mb-3">See it in action</h2>
+    <p class="text-sm text-gray-400 text-center mb-10 max-w-xl mx-auto">
+      Decision tables and dependency graphs authored in Camunda Desktop Modeler and executed inline by TaktX.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- DMN Decision Table -->
+      <div class="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden hover:border-primary/30 transition-all duration-200">
+        <div class="flex items-center gap-2 px-4 py-3 bg-gray-800 border-b border-gray-700">
+          <span class="material-symbols-outlined text-primary text-sm">table_chart</span>
+          <span class="text-gray-300 text-sm font-medium">DMN Decision Table</span>
+          <span class="ml-auto text-xs text-gray-500 bg-gray-700 px-2 py-0.5 rounded">DMN 1.3</span>
+        </div>
+        <div class="relative group cursor-zoom-in"
+             (click)="openLightbox('assets/images/screenshots/dmn.png')">
+          <img src="assets/images/screenshots/dmn.png"
+               alt="DMN decision table modeled in Camunda Desktop Modeler"
+               class="w-full object-cover"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="absolute inset-0 hidden flex-col items-center justify-center text-center p-6">
+            <span class="material-symbols-outlined text-5xl text-gray-600 mb-3">image</span>
+            <p class="text-gray-500 text-sm">DMN Decision Table screenshot</p>
+          </div>
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+            <span class="material-symbols-outlined text-white text-5xl drop-shadow-lg">zoom_in</span>
+          </div>
+        </div>
+        <div class="px-4 py-3 border-t border-gray-700/60">
+          <p class="text-xs text-gray-500">Standard DMN 1.3 decision table with FEEL expressions — evaluated inline by the engine.</p>
+        </div>
+      </div>
+
+      <!-- Decision Requirements Graph -->
+      <div class="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden hover:border-primary/30 transition-all duration-200">
+        <div class="flex items-center gap-2 px-4 py-3 bg-gray-800 border-b border-gray-700">
+          <span class="material-symbols-outlined text-primary text-sm">account_tree</span>
+          <span class="text-gray-300 text-sm font-medium">Decision Requirements Graph</span>
+          <span class="ml-auto text-xs text-gray-500 bg-gray-700 px-2 py-0.5 rounded">DRG</span>
+        </div>
+        <div class="relative group cursor-zoom-in"
+             (click)="openLightbox('assets/images/screenshots/drg.png')">
+          <img src="assets/images/screenshots/drg.png"
+               alt="Decision Requirements Graph (DRG) showing composed decision tables"
+               class="w-full object-cover"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="absolute inset-0 hidden flex-col items-center justify-center text-center p-6">
+            <span class="material-symbols-outlined text-5xl text-gray-600 mb-3">image</span>
+            <p class="text-gray-500 text-sm">Decision Requirements Graph screenshot</p>
+          </div>
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+            <span class="material-symbols-outlined text-white text-5xl drop-shadow-lg">zoom_in</span>
+          </div>
+        </div>
+        <div class="px-4 py-3 border-t border-gray-700/60">
+          <p class="text-xs text-gray-500">Multiple decision tables composed into a structured dependency graph for reusable logic.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────────────────────
+     Section 3 — Why separate decisions from processes
+──────────────────────────────────────────────────────────────── -->
+<section class="bg-gray-950 py-16 border-b border-gray-800">
+  <div class="container mx-auto px-4 max-w-3xl text-center">
+
+    <h2 class="text-2xl font-bold text-white mb-4">Why separate decisions from processes</h2>
+    <p class="text-gray-300 mb-5 max-w-2xl mx-auto">
+      Externalizing decision logic from BPMN improves model clarity, reuse, and maintainability.
+      A BPMN process describes the flow; a DMN decision table describes the logic — keeping each concern
+      in the right place.
+    </p>
+    <p class="text-sm text-gray-500 max-w-2xl mx-auto">
+      Some platforms introduce additional infrastructure to execute decisions separately, increasing latency
+      and operational overhead. TaktX evaluates decisions directly within the execution flow, keeping
+      architectures simpler and more predictable.
+    </p>
+
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────────────────────
+     Section 4 — Execution model
+──────────────────────────────────────────────────────────────── -->
+<section class="bg-gray-900 py-16 border-b border-gray-800">
+  <div class="container mx-auto px-4 max-w-4xl">
+
+    <h2 class="text-2xl font-bold text-white text-center mb-4">Execution model</h2>
+    <p class="text-gray-300 text-center max-w-2xl mx-auto mb-3">
+      TaktX evaluates BPMN and DMN within the same event-driven runtime. This avoids cross-service
+      communication, reduces latency, and simplifies deployment.
+    </p>
+    <p class="text-sm text-gray-500 text-center max-w-2xl mx-auto mb-10">
+      No need for dedicated decision services, separate scaling strategies, or additional infrastructure components.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+
+      <div class="bg-gray-800 rounded-xl border border-gray-700 p-5 text-center hover:border-primary/30 transition-all duration-200">
+        <span class="material-symbols-outlined text-primary text-3xl mb-3 block">bolt</span>
+        <div class="text-white font-semibold text-sm mb-1">No cross-service calls</div>
+        <div class="text-gray-500 text-xs leading-relaxed">Decisions run inside the same engine instance as the process — zero network overhead.</div>
+      </div>
+
+      <div class="bg-gray-800 rounded-xl border border-gray-700 p-5 text-center hover:border-primary/30 transition-all duration-200">
+        <span class="material-symbols-outlined text-primary text-3xl mb-3 block">layers</span>
+        <div class="text-white font-semibold text-sm mb-1">Single deployment unit</div>
+        <div class="text-gray-500 text-xs leading-relaxed">No separate decision service to deploy, scale, or monitor independently.</div>
+      </div>
+
+      <div class="bg-gray-800 rounded-xl border border-gray-700 p-5 text-center hover:border-primary/30 transition-all duration-200">
+        <span class="material-symbols-outlined text-primary text-3xl mb-3 block">speed</span>
+        <div class="text-white font-semibold text-sm mb-1">Predictable latency</div>
+        <div class="text-gray-500 text-xs leading-relaxed">Decision evaluation adds no network overhead to the execution flow.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────────────────────
+     Section 5 — Example
+──────────────────────────────────────────────────────────────── -->
+<section class="bg-gray-950 py-16 border-b border-gray-800">
+  <div class="container mx-auto px-4 max-w-3xl">
+
+    <h2 class="text-2xl font-bold text-white text-center mb-3">Example</h2>
+    <p class="text-gray-400 text-center text-sm mb-8 max-w-xl mx-auto">
+      A BPMN process calling a DMN decision table to evaluate loan risk, with a FEEL expression
+      used in a decision table cell.
+    </p>
+
+    <!-- Process flow -->
+    <div class="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden mb-5">
+      <div class="px-4 py-3 bg-gray-800 border-b border-gray-700 flex items-center justify-between">
+        <span class="text-gray-300 text-sm font-medium">Process flow</span>
+        <span class="text-xs text-gray-500 bg-gray-700 px-2 py-0.5 rounded">BPMN + DMN</span>
+      </div>
+      <pre class="p-5 text-sm font-mono leading-7 overflow-x-auto"><code><span class="text-gray-400">Process:</span> <span class="text-white">Loan Application</span>
+  <span class="text-primary">→</span> Evaluate Risk   <span class="text-gray-500">(DMN decision table)</span>
+        <span class="text-gray-500">↳ input:</span>  <span class="text-gray-300">applicantScore, requestedAmount</span>
+        <span class="text-gray-500">↳ output:</span> <span class="text-primary">riskScore</span>
+  <span class="text-primary">→</span> Gateway: <span class="text-white">riskScore</span>
+        <span class="text-gray-500">↳</span> riskScore <span class="text-primary">≤ 0.4</span>  <span class="text-green-400">→ auto-approve</span>
+        <span class="text-gray-500">↳</span> riskScore <span class="text-primary">≤ 0.7</span>  <span class="text-yellow-400">→ manual review</span>
+        <span class="text-gray-500">↳</span> riskScore <span class="text-primary">&gt; 0.7</span>  <span class="text-red-400">→ reject</span></code></pre>
+    </div>
+
+    <!-- FEEL expression -->
+    <div class="bg-gray-900 rounded-xl border border-gray-700 overflow-hidden">
+      <div class="px-4 py-3 bg-gray-800 border-b border-gray-700 flex items-center justify-between">
+        <span class="text-gray-300 text-sm font-medium">FEEL expression — decision table cell</span>
+        <span class="text-xs text-gray-500 bg-gray-700 px-2 py-0.5 rounded">FEEL</span>
+      </div>
+      <pre class="p-5 text-sm font-mono leading-6 overflow-x-auto"><code><span class="text-primary">if</span> riskScore <span class="text-primary">&gt;</span> <span class="text-yellow-300">0.7</span> <span class="text-primary">then</span> <span class="text-green-400">"manual"</span> <span class="text-primary">else</span> <span class="text-green-400">"auto"</span></code></pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────────────────────
+     Section 6 — Current scope
+──────────────────────────────────────────────────────────────── -->
+<section class="bg-gray-900 py-16">
+  <div class="container mx-auto px-4 max-w-3xl">
+
+    <h2 class="text-2xl font-bold text-white text-center mb-3">Current scope</h2>
+    <p class="text-gray-400 text-center text-sm mb-10 max-w-xl mx-auto">
+      DMN support in TaktX is focused on execution. Decision modeling is done in external tools
+      such as Camunda Desktop Modeler.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
+
+      <div class="bg-gray-800 rounded-lg p-4 border border-primary/20 text-center">
+        <span class="material-symbols-outlined text-primary text-2xl mb-2 block">check_circle</span>
+        <div class="text-white font-medium text-sm mb-1">Execution-focused</div>
+        <div class="text-gray-500 text-xs leading-relaxed">DMN decision evaluation inside running process instances</div>
+      </div>
+
+      <div class="bg-gray-800 rounded-lg p-4 border border-primary/20 text-center">
+        <span class="material-symbols-outlined text-primary text-2xl mb-2 block">check_circle</span>
+        <div class="text-white font-medium text-sm mb-1">FEEL only</div>
+        <div class="text-gray-500 text-xs leading-relaxed">FEEL is the sole supported expression language</div>
+      </div>
+
+      <div class="bg-gray-800 rounded-lg p-4 border border-dashed border-gray-600 text-center">
+        <span class="material-symbols-outlined text-gray-500 text-2xl mb-2 block">schedule</span>
+        <div class="text-gray-400 font-medium text-sm mb-1">Decision modeling UI</div>
+        <div class="text-gray-600 text-xs leading-relaxed">Not yet — use Camunda Desktop Modeler to author DMN files</div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="https://github.com/taktx-io/quickstart" target="_blank" rel="noopener noreferrer"
+        class="px-6 py-3 bg-primary hover:brightness-90 text-gray-900 font-bold rounded-md inline-flex items-center gap-2 transition-all duration-200">
+        <span class="material-symbols-outlined">play_arrow</span>
+        Get started
+      </a>
+      <a routerLink="/documentation"
+        class="px-6 py-3 bg-transparent hover:bg-gray-800 text-white font-bold rounded-md inline-flex items-center gap-2 transition-all duration-200 border border-gray-600 hover:border-primary">
+        <span class="material-symbols-outlined">menu_book</span>
+        Documentation
+      </a>
+      <a routerLink="/features"
+        class="inline-flex items-center gap-1 text-primary hover:underline text-sm font-semibold">
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+        All features
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox overlay -->
+@if (lightboxOpen) {
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4"
+       (click)="closeLightbox()">
+    <div class="relative w-full max-w-6xl" (click)="$event.stopPropagation()">
+      <div class="flex items-center justify-end mb-3">
+        <button (click)="closeLightbox()"
+          class="flex items-center gap-1 text-gray-300 hover:text-white text-sm transition-colors">
+          <span class="material-symbols-outlined text-lg">close</span>
+          Close
+        </button>
+      </div>
+      <img [src]="lightboxSrc" alt="Screenshot"
+           class="w-full rounded-xl shadow-2xl border border-gray-700">
+      <p class="text-center text-gray-500 text-xs mt-3">Click outside or press <kbd class="bg-gray-800 border border-gray-600 rounded px-1 py-0.5 font-mono">Esc</kbd> to close</p>
+    </div>
+  </div>
+}

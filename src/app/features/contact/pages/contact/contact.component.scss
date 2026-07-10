@@ -1,0 +1,102 @@
+// Contact page styles with dark theme
+:host {
+  display: block;
+  
+  // Dark theme overrides for Material components
+  ::ng-deep {
+    // Form field styling for dark theme
+    .mat-mdc-form-field-focus-overlay {
+      background-color: rgba(255, 255, 255, 0.035);
+    }
+    
+    // Input styling
+    .mat-mdc-text-field-wrapper {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    // Label color
+    .mat-mdc-form-field-label {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    // Input text color
+    .mat-mdc-input-element {
+      color: white;
+    }
+    
+    // Outline color
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    // Focused outline color
+    .mat-mdc-form-field.mat-focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: #3182ce !important;
+      }
+    }
+    
+    // Dropdown styling
+    .mat-mdc-select-value-text {
+      color: white;
+    }
+    
+    // Error styling
+    .mat-mdc-form-field-error {
+      color: #f56565;
+    }
+  }
+}
+
+// Ensure Angular Material form fields use full width
+mat-form-field {
+  width: 100%;
+}
+
+// Specific button styling to match site theme
+.mat-mdc-raised-button.mat-primary {
+  background-color: #3182ce;
+  color: white;
+  font-weight: 500;
+  padding: 8px 16px;
+  
+  &:hover {
+    background-color: #2c5282;
+  }
+}
+
+// Custom text styling
+h1, h2, h3 {
+  color: white;
+}
+
+// Card styling
+.bg-gray-800 {
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+// Social icons styling
+.social-links a {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+// Apply custom padding to form fields
+.mat-mdc-form-field {
+  margin-bottom: 8px;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}

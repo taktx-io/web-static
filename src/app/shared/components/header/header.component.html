@@ -1,0 +1,55 @@
+<header class="bg-gray-900 text-white border-b border-gray-800 shadow-lg">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <a routerLink="/" class="flex items-center">
+        <img src="assets/images/taktx-logo-transparent.png" alt="TaktX Logo" class="h-12 w-auto" />
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex items-center space-x-8">
+      <a routerLink="/"
+        class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Home</a>
+      <a routerLink="/documentation"
+        class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Documentation</a>
+      <a routerLink="/decisions"
+        class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Decisions</a>
+      <a href="https://medium.com/@eric.hendriks" target="_blank" rel="noopener noreferrer"
+        class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Blog</a>
+      <a routerLink="/pricing"
+        class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Pricing</a>
+      <a routerLink="/about"
+        class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">About</a>
+      <a routerLink="/contact"
+        class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Contact</a>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="md:hidden focus:outline-none" (click)="toggleMobileMenu()" aria-label="Toggle navigation">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden bg-gray-900" [class.hidden]="!mobileMenuOpen">
+    <div class="container mx-auto px-6 py-4 space-y-2">
+      <a routerLink="/"
+        class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Home</a>
+      <a routerLink="/documentation"
+        class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Documentation</a>
+      <a routerLink="/decisions"
+        class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Decisions</a>
+      <a href="https://medium.com/@eric.hendriks" target="_blank" rel="noopener noreferrer"
+        class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Blog</a>
+      <a routerLink="/pricing"
+        class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Pricing</a>
+      <a routerLink="/about"
+        class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">About</a>
+      <a routerLink="/contact"
+        class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Contact</a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_inclusive_gateway_context" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="ClaimRoutingProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Claim Received">
+      <bpmn:outgoing>Flow_1xbi5fm</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:inclusiveGateway id="Gateway_1" name="Determine Departments">
+      <bpmn:incoming>Flow_1xbi5fm</bpmn:incoming>
+      <bpmn:outgoing>Flow_064k790</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:userTask id="UserTask_Medical" name="Medical Review">
+      <bpmn:outgoing>Flow_1xs0qnu</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Property" name="Property Review">
+      <bpmn:incoming>Flow_064k790</bpmn:incoming>
+      <bpmn:outgoing>Flow_05re123</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Legal" name="Legal Review">
+      <bpmn:outgoing>Flow_0in8etm</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:inclusiveGateway id="Gateway_Join" name="Join">
+      <bpmn:incoming>Flow_05re123</bpmn:incoming>
+      <bpmn:incoming>Flow_1xs0qnu</bpmn:incoming>
+      <bpmn:incoming>Flow_0in8etm</bpmn:incoming>
+      <bpmn:outgoing>Flow_16igiq5</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:endEvent id="EndEvent_1" name="Complete">
+      <bpmn:incoming>Flow_16igiq5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Gateway_1" targetRef="UserTask_Medical">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${medical}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Gateway_1" targetRef="UserTask_Legal">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${legal}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1xbi5fm" sourceRef="StartEvent_1" targetRef="Gateway_1" />
+    <bpmn:sequenceFlow id="Flow_064k790" sourceRef="Gateway_1" targetRef="UserTask_Property" />
+    <bpmn:sequenceFlow id="Flow_05re123" sourceRef="UserTask_Property" targetRef="Gateway_Join" />
+    <bpmn:sequenceFlow id="Flow_1xs0qnu" sourceRef="UserTask_Medical" targetRef="Gateway_Join" />
+    <bpmn:sequenceFlow id="Flow_0in8etm" sourceRef="UserTask_Legal" targetRef="Gateway_Join" />
+    <bpmn:sequenceFlow id="Flow_16igiq5" sourceRef="Gateway_Join" targetRef="EndEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_inclusive_gateway_context">
+    <bpmndi:BPMNPlane id="BPMNPlane_inclusive_gateway_context" bpmnElement="ClaimRoutingProcess">
+      <bpmndi:BPMNShape id="UserTask_Medical_di" bpmnElement="UserTask_Medical">
+        <dc:Bounds x="416" y="85" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Legal_di" bpmnElement="UserTask_Legal">
+        <dc:Bounds x="416" y="265" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Property_di" bpmnElement="UserTask_Property">
+        <dc:Bounds x="416" y="175" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1_di" bpmnElement="Gateway_1">
+        <dc:Bounds x="305" y="190" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="231.5" y="171" width="63" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Join_di" bpmnElement="Gateway_Join">
+        <dc:Bounds x="566" y="190" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="618.5" y="223" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="172" y="197" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="151" y="233" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="732" y="197" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="726" y="233" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="330" y="190" />
+        <di:waypoint x="330" y="125" />
+        <di:waypoint x="416" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="330" y="240" />
+        <di:waypoint x="330" y="305" />
+        <di:waypoint x="416" y="305" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xbi5fm_di" bpmnElement="Flow_1xbi5fm">
+        <di:waypoint x="208" y="215" />
+        <di:waypoint x="305" y="215" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_064k790_di" bpmnElement="Flow_064k790">
+        <di:waypoint x="355" y="215" />
+        <di:waypoint x="416" y="215" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05re123_di" bpmnElement="Flow_05re123">
+        <di:waypoint x="516" y="215" />
+        <di:waypoint x="566" y="215" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xs0qnu_di" bpmnElement="Flow_1xs0qnu">
+        <di:waypoint x="516" y="125" />
+        <di:waypoint x="591" y="125" />
+        <di:waypoint x="591" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0in8etm_di" bpmnElement="Flow_0in8etm">
+        <di:waypoint x="516" y="305" />
+        <di:waypoint x="591" y="305" />
+        <di:waypoint x="591" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16igiq5_di" bpmnElement="Flow_16igiq5">
+        <di:waypoint x="616" y="215" />
+        <di:waypoint x="732" y="215" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

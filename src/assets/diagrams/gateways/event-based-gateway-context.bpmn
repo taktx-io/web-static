@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_event_based_gateway_context" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="CustomerResponseProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Request Sent">
+      <bpmn:outgoing>Flow_1hzbo10</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:eventBasedGateway id="Gateway_1" name="Wait for Event">
+      <bpmn:incoming>Flow_1hzbo10</bpmn:incoming>
+      <bpmn:outgoing>Flow_0pkfcuq</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0nsxcry</bpmn:outgoing>
+    </bpmn:eventBasedGateway>
+    <bpmn:intermediateCatchEvent id="CatchEvent_Message" name="Customer Reply">
+      <bpmn:incoming>Flow_0pkfcuq</bpmn:incoming>
+      <bpmn:outgoing>Flow_02rwl9c</bpmn:outgoing>
+      <bpmn:messageEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:intermediateCatchEvent id="CatchEvent_Timer" name="Timeout">
+      <bpmn:incoming>Flow_0nsxcry</bpmn:incoming>
+      <bpmn:outgoing>Flow_0a5tfqy</bpmn:outgoing>
+      <bpmn:timerEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="ServiceTask_Reply" name="Process Reply">
+      <bpmn:incoming>Flow_02rwl9c</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xeg05x</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_Timeout" name="Handle Timeout">
+      <bpmn:incoming>Flow_0a5tfqy</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hsm8uc</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_1" name="Complete">
+      <bpmn:incoming>Flow_1xeg05x</bpmn:incoming>
+      <bpmn:incoming>Flow_0hsm8uc</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1hzbo10" sourceRef="StartEvent_1" targetRef="Gateway_1" />
+    <bpmn:sequenceFlow id="Flow_0pkfcuq" sourceRef="Gateway_1" targetRef="CatchEvent_Message" />
+    <bpmn:sequenceFlow id="Flow_02rwl9c" sourceRef="CatchEvent_Message" targetRef="ServiceTask_Reply" />
+    <bpmn:sequenceFlow id="Flow_1xeg05x" sourceRef="ServiceTask_Reply" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_0hsm8uc" sourceRef="ServiceTask_Timeout" targetRef="EndEvent_1" />
+    <bpmn:sequenceFlow id="Flow_0a5tfqy" sourceRef="CatchEvent_Timer" targetRef="ServiceTask_Timeout" />
+    <bpmn:sequenceFlow id="Flow_0nsxcry" sourceRef="Gateway_1" targetRef="CatchEvent_Timer" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_event_based_gateway_context">
+    <bpmndi:BPMNPlane id="BPMNPlane_event_based_gateway_context" bpmnElement="CustomerResponseProcess">
+      <bpmndi:BPMNShape id="CatchEvent_Timer_di" bpmnElement="CatchEvent_Timer">
+        <dc:Bounds x="392" y="312" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="390" y="358" width="40" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CatchEvent_Message_di" bpmnElement="CatchEvent_Message">
+        <dc:Bounds x="392" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="371" y="138" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="712" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="654" y="203" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1_di" bpmnElement="Gateway_1">
+        <dc:Bounds x="305" y="185" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="365" y="203" width="69" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="172" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="157" y="228" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_Reply_di" bpmnElement="ServiceTask_Reply">
+        <dc:Bounds x="500" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_Timeout_di" bpmnElement="ServiceTask_Timeout">
+        <dc:Bounds x="490" y="290" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0nsxcry_di" bpmnElement="Flow_0nsxcry">
+        <di:waypoint x="330" y="235" />
+        <di:waypoint x="330" y="330" />
+        <di:waypoint x="392" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0a5tfqy_di" bpmnElement="Flow_0a5tfqy">
+        <di:waypoint x="428" y="330" />
+        <di:waypoint x="490" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0pkfcuq_di" bpmnElement="Flow_0pkfcuq">
+        <di:waypoint x="330" y="185" />
+        <di:waypoint x="330" y="120" />
+        <di:waypoint x="392" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02rwl9c_di" bpmnElement="Flow_02rwl9c">
+        <di:waypoint x="428" y="120" />
+        <di:waypoint x="500" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xeg05x_di" bpmnElement="Flow_1xeg05x">
+        <di:waypoint x="600" y="120" />
+        <di:waypoint x="730" y="120" />
+        <di:waypoint x="730" y="192" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hsm8uc_di" bpmnElement="Flow_0hsm8uc">
+        <di:waypoint x="590" y="330" />
+        <di:waypoint x="730" y="330" />
+        <di:waypoint x="730" y="228" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hzbo10_di" bpmnElement="Flow_1hzbo10">
+        <di:waypoint x="208" y="210" />
+        <di:waypoint x="305" y="210" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

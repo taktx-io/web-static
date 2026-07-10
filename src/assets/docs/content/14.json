@@ -1,0 +1,4 @@
+{
+  "sectionId": 14,
+  "content": "<p>Although the BPMN specification is standardized, it allows for vendor specific extensions which are heaviliy used by BPMN implementations. TaktX is initially made to be compatible with the extensions from Camunda 8 or Zeebe. So the best option to create BPMN models which run in TaktX is to download the Camunda Modeler <a href=\"https://camunda.com/download/modeler/\" target=\"_blank\" rel=\"noopener\">here</a>.&nbsp; &nbsp;<br><br>When creating a new model make sure to select Camunda 8 to create the Taktx compatible BPMN files.&nbsp;</p>\n<p><img src=\"assets/docs/images/section_14_20251101_192642_image.png\"></p>"
+}

@@ -1,0 +1,1205 @@
+// Hero section styling
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  position: relative;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// ── Hero right column ────────────────────────────────────────────────────────
+
+.hero-terminal-col {
+  animation: heroColSlideIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.15s;
+}
+
+@keyframes heroColSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Terminal window card
+.hero-terminal {
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  pre {
+    margin: 0;
+    line-height: 1.8;
+    color: #cdd9e5;
+    code {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.78rem;
+    }
+  }
+}
+
+// Blinking terminal cursor
+.terminal-cursor {
+  display: inline-block;
+  animation: cursorBlink 1.1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+// Metric chips
+.hero-metric-chip {
+  transition: border-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: rgba(0, 207, 255, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+// ── end Hero right column ────────────────────────────────────────────────────
+
+// Carousel
+.hero-carousel {
+  position: relative;
+  height: 400px; // taller now that metric chips are removed
+}
+
+.hero-carousel-slide {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: carouselFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes carouselFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Hero heading — fluid typography so the two lines never wrap at any viewport.
+// Below md the column is full-width (stacked layout), so a larger vw value is fine.
+// At md+ the column is 50% wide, so we drop to ~2.5vw and lock with white-space: nowrap.
+.hero-heading {
+  font-size: clamp(1.5rem, 5.5vw, 2.25rem);   // mobile / sm  (full-width column)
+
+  @media (min-width: 768px) {                   // md+  (half-width column)
+    font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+    white-space: nowrap;
+  }
+}
+
+// Left-column subtext — fixed height reserves space for the longest slide text
+// so the buttons/trust-strip below never shift position during transitions.
+.hero-subtext {
+  // 3 lines × line-height 1.75rem (text-lg/xl default) = 5.25rem; add a little buffer
+  min-height: 5.5rem;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);        // subtle fluid scaling; falls back to 1rem on mobile
+  animation-duration: 0.4s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+
+@keyframes subtextFadeEven {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes subtextFadeOdd {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+// ── end Carousel ─────────────────────────────────────────────────────────────
+
+
+// Animation container
+.animation-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0.8; // Slightly more visible
+}
+
+// Speed lines animation - enhanced with more lines and bolder appearance
+.speed-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  .speed-line {
+    position: absolute;
+    height: 2px; // Thicker lines
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    transform-origin: left center;
+    opacity: 0;
+    box-shadow: 0 0 8px var(--primary); // Glow effect
+    animation: speedLineAnim 3s ease-out infinite;
+
+    // More lines with varied heights and positions
+    &.line1 {
+      width: 50%;
+      top: 15%;
+      height: 1px;
+      animation-delay: 0s;
+    }
+
+    &.line2 {
+      width: 70%;
+      top: 28%;
+      height: 3px; // Extra thick
+      animation-delay: 0.3s;
+    }
+
+    &.line3 {
+      width: 60%;
+      top: 41%;
+      animation-delay: 0.6s;
+    }
+
+    &.line4 {
+      width: 80%;
+      top: 54%;
+      height: 1px;
+      animation-delay: 0.9s;
+    }
+
+    &.line5 {
+      width: 55%;
+      top: 67%;
+      height: 2px;
+      animation-delay: 1.2s;
+    }
+
+    &.line6 {
+      width: 65%;
+      top: 80%;
+      height: 1px;
+      animation-delay: 1.5s;
+    }
+
+    &.line7 {
+      width: 75%;
+      top: 93%;
+      height: 3px; // Extra thick
+      animation-delay: 1.8s;
+    }
+
+    &.line8 {
+      width: 45%;
+      top: 5%;
+      height: 1px;
+      animation-delay: 2.1s;
+    }
+  }
+}
+
+// Enhanced animation for speed lines - faster and more dramatic
+@keyframes speedLineAnim {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+    transform-origin: left;
+  }
+
+  40% {
+    transform: scaleX(1);
+    opacity: 0.9; // Higher visibility
+    transform-origin: left;
+  }
+
+  40.1% {
+    transform-origin: right;
+  }
+
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+    transform-origin: right;
+  }
+}
+
+// Data streams - horizontal flowing data visualizations
+.data-streams {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+
+  .stream {
+    position: absolute;
+    height: 20px;
+    right: 0;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(0, 207, 255, 0.05) 5%,
+        rgba(0, 207, 255, 0.1) 10%,
+        rgba(0, 207, 255, 0.2) 50%,
+        rgba(0, 207, 255, 0.1) 90%,
+        transparent 100%);
+    opacity: 0;
+    animation: streamFlow 8s ease-in-out infinite;
+
+    &.stream1 {
+      width: 60%;
+      top: 25%;
+      animation-delay: 0s;
+    }
+
+    &.stream2 {
+      width: 80%;
+      top: 50%;
+      animation-delay: 2s;
+    }
+
+    &.stream3 {
+      width: 70%;
+      top: 75%;
+      animation-delay: 4s;
+    }
+  }
+}
+
+// Animation for data streams
+@keyframes streamFlow {
+  0% {
+    transform: translateX(100%) scaleY(0.5);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.7;
+    transform: translateX(90%) scaleY(1);
+  }
+
+  90% {
+    opacity: 0.7;
+    transform: translateX(10%) scaleY(1);
+  }
+
+  100% {
+    transform: translateX(0%) scaleY(0.5);
+    opacity: 0;
+  }
+}
+
+// Complex BPMN Diagram - Based on the reference image
+.bpmn-diagram {
+  position: absolute;
+  top: 50px;
+  right: 10%;
+  width: 50%; // Only take up the right half
+  height: 100%;
+  z-index: 3;
+  pointer-events: none; // Prevent interaction
+  transform: scale(0.9); // Scale down to fit in the hero section
+  transform-origin: top right; // Align to top right
+}
+
+// Common styles for all BPMN elements
+.bpmn-element {
+  position: absolute;
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 10px rgba(0, 207, 255, 0.5);
+  background-color: rgba(0, 207, 255, 0.05);
+  opacity: 0;
+  z-index: 2; // Ensure elements are above flows
+}
+
+// Start event styling - A circle with a single thin border
+.start-event {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  top: 75px;
+  left: 200px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+// Task/activity styling - Rounded rectangle
+.task {
+  width: 100px;
+  height: 70px;
+  border-radius: 8px; // More rounded corners per BPMN 2.0
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // Task label styling
+  .task-label {
+    font-size: 12px;
+    color: var(--primary);
+    text-shadow: 0 0 5px rgba(0, 207, 255, 0.8);
+    font-weight: 500;
+  }
+
+  // Service task marker (gear icon) for tasks with a + marker
+  .plus-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 16px;
+    height: 16px;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: var(--primary);
+    }
+
+    &:before {
+      width: 12px;
+      height: 2px;
+      top: 7px;
+      left: 2px;
+    }
+
+    &:after {
+      width: 2px;
+      height: 12px;
+      top: 2px;
+      left: 7px;
+    }
+  }
+}
+
+// Specific task positions
+.task1 {
+  top: 65px;
+  left: 280px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 1s;
+}
+
+.task2 {
+  top: 65px;
+  left: 520px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 2s;
+}
+
+.task3 {
+  top: 65px;
+  left: 670px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 2.5s;
+}
+
+.task4 {
+  top: 220px;
+  left: 380px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 2.2s;
+}
+
+.task5 {
+  top: 270px;
+  left: 630px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 3.5s;
+}
+
+.task6 {
+  top: 350px;
+  left: 380px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 4s;
+}
+
+.task7 {
+  top: 350px;
+  left: 630px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 4.5s;
+}
+
+// Gateway styling - Diamond shape
+.gateway {
+  width: 50px;
+  height: 50px;
+  transform: rotate(45deg);
+  top: 68px;
+  left: 405px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 1.5s;
+  z-index: 3;
+
+  // X marker inside gateway (exclusive gateway)
+  .gateway-x {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: var(--primary);
+    }
+
+    &:before {
+      width: 24px;
+      height: 2px;
+      top: 0;
+      left: -12px;
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      width: 24px;
+      height: 2px;
+      top: 0;
+      left: -12px;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// End event styling - Circle with thick border
+.end-event {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-width: 4px; // Thicker border to distinguish from start event per BPMN 2.0
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: rgba(0, 207, 255, 0.3);
+  }
+}
+
+// Specific end event positions
+.end1 {
+  top: 75px;
+  left: 810px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 3s;
+}
+
+.end2 {
+  top: 285px;
+  left: 810px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 4s;
+}
+
+.end3 {
+  top: 365px;
+  left: 810px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 5s;
+}
+
+// Boundary event styling - Dashed circle
+.boundary-event {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border-style: dashed;
+  z-index: 3; // Ensure boundary events appear above tasks
+
+  .wave-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 8px;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 4px;
+      border-radius: 4px;
+      background-color: var(--primary);
+    }
+
+    &:before {
+      top: 0;
+    }
+
+    &:after {
+      bottom: 0;
+    }
+  }
+
+  .clock-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid var(--primary);
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: var(--primary);
+    }
+
+    &:before {
+      width: 1px;
+      height: 6px;
+      top: 3px;
+      left: 7.5px;
+    }
+
+    &:after {
+      width: 5px;
+      height: 1px;
+      top: 8px;
+      left: 7.5px;
+    }
+  }
+}
+
+// Specific boundary event positions - Attached to the task border
+.boundary1 {
+  top: 255px;
+  left: 485px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 3.2s;
+}
+
+.boundary2 {
+  top: 255px;
+  left: 565px;
+  animation: bpmnElementFadeIn 0.5s ease forwards;
+  animation-delay: 3.3s;
+}
+
+// Flow arrows styling
+.bpmn-flow {
+  position: absolute;
+  height: 2px;
+  background-color: var(--primary);
+  transform-origin: left;
+  box-shadow: 0 0 8px var(--primary);
+  opacity: 0;
+  z-index: 1; // Ensure flows are beneath elements
+
+  // Arrow head
+  &:after {
+    content: '';
+    position: absolute;
+    right: -1px; // Slightly adjust to connect properly
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 8px;
+    border-color: transparent transparent transparent var(--primary);
+  }
+
+  // Flow labels
+  .flow-label {
+    position: absolute;
+    font-size: 12px;
+    color: var(--primary);
+    white-space: nowrap;
+    text-shadow: 0 0 5px var(--primary);
+    z-index: 2; // Above flows but below elements
+  }
+}
+
+// Specific flow positions and animations
+.flow1 {
+  width: 45px;
+  top: 93px; // Center-align with start event
+  left: 236px; // Connect from the edge of start event
+  animation: flowGrow 0.4s ease forwards;
+  animation-delay: 0.7s;
+}
+
+.flow2 {
+  width: 40px;
+  top: 93px;
+  left: 370px; // Connect more precisely from task1
+  animation: flowGrow 0.4s ease forwards;
+  animation-delay: 1.2s;
+}
+
+.flow3 {
+  width: 70px;
+  top: 93px;
+  left: 455px; // Connect from the right point of the gateway
+  animation: flowGrow 0.4s ease forwards;
+  animation-delay: 1.7s;
+
+  .flow-label {
+    top: -20px;
+    left: 25px;
+  }
+}
+
+.flow4 {
+  width: 50px;
+  top: 93px; // Center-align with tasks
+  left: 620px; // Connect from the edge of task
+  animation: flowGrow 0.4s ease forwards;
+  animation-delay: 2.2s;
+}
+
+.flow5 {
+  width: 65px;
+  top: 93px; // Center-align with task and end event
+  left: 770px; // Connect from the edge of task
+  animation: flowGrow 0.4s ease forwards;
+  animation-delay: 2.7s;
+}
+
+.flow6 {
+  width: 2px;
+  height: 90px;
+  top: 118px; // Start from the bottom point of the gateway
+  left: 430px; // Centered with gateway
+  background: transparent;
+  border-left: 2px solid var(--primary);
+  box-shadow: 0 0 5px rgba(0, 207, 255, 0.8);
+  animation: flowBorderGrow 0.4s ease forwards;
+  animation-delay: 1.8s;
+
+  .flow-label {
+    top: 25px;
+    left: -25px;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: auto;
+    bottom: -8px;
+    right: auto;
+    left: -4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 8px solid var(--primary);
+    box-shadow: 0 0 5px rgba(0, 207, 255, 0.8);
+    transform: rotate(0);
+  }
+}
+
+.flow7 {
+  width: 80px;
+  height: 70px;
+  top: 210px;
+  left: 540px;
+  background: transparent;
+  border-left: 2px solid var(--primary);
+  border-top: 2px solid var(--primary);
+  box-shadow: 0 0 5px rgba(0, 207, 255, 0.8);
+  animation: flowBorderGrow 0.4s ease forwards;
+  animation-delay: 3.1s;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: auto;
+    top: -4px;
+    right: auto;
+    left: -4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid var(--primary);
+    box-shadow: 0 0 5px rgba(0, 207, 255, 0.8);
+    transform: rotate(0);
+  }
+}
+
+.flow8 {
+  width: 100px;
+  top: 255px;
+  left: 585px;
+  animation: flowGrow 0.4s ease forwards;
+  animation-delay: 3.3s;
+}
+
+.flow9 {
+  width: 80px;
+  top: 285px; // Center-align with task and end event
+  left: 730px; // Connect from task
+  animation: flowGrow 0.4s ease forwards;
+  animation-delay: 3.6s;
+}
+
+.flow10 {
+  width: 2px;
+  height: 75px;
+  top: 275px;
+  left: 485px;
+  background: transparent;
+  border-left: 2px solid var(--primary);
+  box-shadow: 0 0 5px rgba(0, 207, 255, 0.8);
+  animation: flowBorderGrow 0.4s ease forwards;
+  animation-delay: 3.4s;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: auto;
+    bottom: -8px;
+    right: auto;
+    left: -4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 8px solid var(--primary);
+    box-shadow: 0 0 5px rgba(0, 207, 255, 0.8);
+    transform: rotate(0);
+  }
+}
+
+.flow11 {
+  width: 50px;
+  top: 365px; // Center-align with tasks
+  left: 580px; // Connect from first task
+  animation: flowGrow 0.4s ease forwards;
+  animation-delay: 4.2s;
+}
+
+.flow12 {
+  width: 80px;
+  top: 365px; // Center-align with task and end event
+  left: 730px; // Connect from task
+  animation: flowGrow 0.4s ease forwards;
+  animation-delay: 4.7s;
+}
+
+// Animation for BPMN elements appearing
+@keyframes bpmnElementFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Animation for rotated gateway appearing
+@keyframes gatewayFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) rotate(45deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
+}
+
+// Animation for flow arrows growing
+@keyframes flowGrow {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+// Animation for border-based flows
+@keyframes flowBorderGrow {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+// Aurora effect
+.aurora-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.aurora-layer {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.6;
+  right: -10%; // Adjusted from -20% to make more visible
+
+  &.layer1 {
+    top: -10%;
+    width: 600px;
+    height: 1000px;
+    background: linear-gradient(135deg, rgba(0, 207, 255, 0.2), rgba(72, 45, 253, 0.08));
+    animation: auroraFlow1 25s infinite alternate ease-in-out;
+  }
+
+  &.layer2 {
+    top: 15%;
+    width: 800px;
+    height: 800px;
+    background: linear-gradient(225deg, rgba(72, 45, 253, 0.12), rgba(26, 188, 156, 0.06));
+    animation: auroraFlow2 20s infinite alternate ease-in-out;
+    animation-delay: 2s;
+  }
+
+  &.layer3 {
+    top: 30%;
+    width: 500px;
+    height: 900px;
+    background: linear-gradient(315deg, rgba(0, 207, 255, 0.1), rgba(200, 125, 255, 0.06));
+    animation: auroraFlow3 30s infinite alternate ease-in-out;
+    animation-delay: 4s;
+  }
+}
+
+@keyframes auroraFlow1 {
+  0% {
+    transform: translate(5%, -10%) rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: translate(5%, 0%) rotate(3deg) scale(1.05);
+  }
+
+  50% {
+    transform: translate(0%, 5%) rotate(0deg) scale(0.98);
+  }
+
+  75% {
+    transform: translate(-5%, 0%) rotate(-3deg) scale(1.02);
+  }
+
+  100% {
+    transform: translate(0%, -5%) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes auroraFlow2 {
+  0% {
+    transform: translate(0%, 10%) rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: translate(-5%, 5%) rotate(-2deg) scale(0.95);
+  }
+
+  50% {
+    transform: translate(-5%, -5%) rotate(-4deg) scale(1.03);
+  }
+
+  75% {
+    transform: translate(0%, -10%) rotate(-2deg) scale(0.98);
+  }
+
+  100% {
+    transform: translate(5%, 0%) rotate(0deg) scale(1.02);
+  }
+}
+
+@keyframes auroraFlow3 {
+  0% {
+    transform: translate(-5%, 0%) rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: translate(0%, -10%) rotate(4deg) scale(1.04);
+  }
+
+  50% {
+    transform: translate(5%, -5%) rotate(0deg) scale(0.96);
+  }
+
+  75% {
+    transform: translate(5%, 5%) rotate(-4deg) scale(1.01);
+  }
+
+  100% {
+    transform: translate(-5%, 10%) rotate(0deg) scale(0.98);
+  }
+}
+
+// Floating technical symbols — kept subtle so the terminal card reads clearly
+.tech-symbols {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; // Confine to left half so they don't overlap the terminal card
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+
+  .symbol {
+    position: absolute;
+    color: var(--primary);
+    font-family: monospace;
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--primary);
+    opacity: 0;
+    animation: symbolFloat 10s ease-in-out infinite;
+
+    &.symbol1 {
+      font-size: 24px;
+      top: 20%;
+      right: 15%;
+      animation-delay: 0s;
+    }
+
+    &.symbol2 {
+      font-size: 24px;
+      top: 40%;
+      right: 10%;
+      animation-delay: 1.5s;
+    }
+
+    &.symbol3 {
+      font-size: 28px;
+      top: 60%;
+      right: 5%;
+      animation-delay: 3s;
+    }
+
+    &.symbol4 {
+      font-size: 28px;
+      top: 80%;
+      right: 15%;
+      animation-delay: 4.5s;
+    }
+
+    &.symbol5 {
+      font-size: 26px;
+      top: 25%;
+      right: 25%;
+      animation-delay: 1.5s;
+    }
+
+    &.symbol6 {
+      font-size: 20px;
+      top: 65%;
+      right: 35%;
+      animation-delay: 4.5s;
+    }
+
+    &.symbol7 {
+      font-size: 30px;
+      top: 45%;
+      right: 18%;
+      animation-delay: 7.5s;
+    }
+
+    &.symbol8 {
+      font-size: 32px;
+      top: 75%;
+      right: 28%;
+      animation-delay: 10.5s;
+    }
+  }
+}
+
+// Animation for tech symbols — capped at 0.35 so they read as texture
+@keyframes symbolFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0);
+  }
+
+  5% {
+    opacity: 0.35;
+  }
+
+  85% {
+    opacity: 0.35;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) translateX(-20px);
+  }
+}
+
+// Hero badge — cycling pill with fade animation
+.hero-badge {
+  backdrop-filter: blur(8px);
+  animation-duration: 0.35s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+
+@keyframes badgeFadeEven {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes badgeFadeOdd {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// (legacy selector kept for any other rounded-full pills in the hero)
+.hero-section .inline-flex.rounded-full {
+  backdrop-filter: blur(8px);
+}
+
+// Code block styling
+pre {
+  margin: 0;
+  line-height: 1.7;
+  color: #cdd9e5;
+
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.85rem;
+  }
+}
+
+// Ops feature grid
+.ops-feature-item {
+  transition: opacity 0.2s ease;
+}
+
+// Primary color for highlights
+:host {
+  --primary: #00CFFF;
+}
+
+// Set primary color class for use in template
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.ring-primary {
+  --tw-ring-color: var(--primary);
+}
+
+// Card animations for both advantages and features sections
+.material-symbols-outlined {
+  transition: transform 0.3s ease;
+}
+
+// Rotation animation for expand/collapse
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+// Card expansion animation
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+// Add a subtle hover effect on all cards (both advantage and feature cards)
+div[class*="bg-gray-800"],
+div[class*="bg-gray-900"] {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -4px rgba(0, 0, 0, 0.5), 0 4px 8px -2px rgba(0, 0, 0, 0.3);
+  }
+
+  // Slightly scale up icon on hover
+  &:hover .material-symbols-outlined {
+    transform: scale(1.1);
+  }
+}
+
+// Additional animation for expanded cards
+div[class*="ring-primary"] {
+  animation: pulse 2s infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 207, 255, 0.2);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgba(0, 207, 255, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 207, 255, 0);
+  }
+}
+
+// Card expansion transition
+[class*="overflow-hidden"] {
+  &[class*="ring-primary"] {
+    transition: max-height 0.3s ease;
+  }
+}
+
+// Content fade-in animation
+div[class*="border-t"] {
+  padding: 1.5em;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

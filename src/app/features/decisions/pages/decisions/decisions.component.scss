@@ -1,0 +1,19 @@
+// Scoped primary colour token — mirrors landing page / features page
+:host {
+  --primary: #00CFFF;
+}
+
+.text-primary  { color: var(--primary); }
+.bg-primary    { background-color: var(--primary); }
+
+// Code blocks — consistent mono font
+pre {
+  margin: 0;
+  color: #cdd9e5;
+
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.82rem;
+  }
+}
+

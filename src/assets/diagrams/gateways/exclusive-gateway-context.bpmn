@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_exclusive_gateway_context" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="OrderApprovalProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Order Received">
+      <bpmn:outgoing>Flow_1suvs90</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="UserTask_1" name="Approve Order">
+      <bpmn:incoming>Flow_1suvs90</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gsp0mg</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_1" name="Order Approved?">
+      <bpmn:incoming>Flow_1gsp0mg</bpmn:incoming>
+      <bpmn:outgoing>Flow_029646s</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1spb23y</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="ServiceTask_1" name="Fulfill Order">
+      <bpmn:incoming>Flow_029646s</bpmn:incoming>
+      <bpmn:outgoing>Flow_0a94mxw</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_Approved" name="Order Fulfilled">
+      <bpmn:incoming>Flow_0a94mxw</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="EndEvent_Rejected" name="Order Rejected">
+      <bpmn:incoming>Flow_1spb23y</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1suvs90" sourceRef="StartEvent_1" targetRef="UserTask_1" />
+    <bpmn:sequenceFlow id="Flow_1gsp0mg" sourceRef="UserTask_1" targetRef="Gateway_1" />
+    <bpmn:sequenceFlow id="Flow_029646s" sourceRef="Gateway_1" targetRef="ServiceTask_1" />
+    <bpmn:sequenceFlow id="Flow_1spb23y" sourceRef="Gateway_1" targetRef="EndEvent_Rejected" />
+    <bpmn:sequenceFlow id="Flow_0a94mxw" sourceRef="ServiceTask_1" targetRef="EndEvent_Approved" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_exclusive_gateway_context">
+    <bpmndi:BPMNPlane id="BPMNPlane_exclusive_gateway_context" bpmnElement="OrderApprovalProcess">
+      <bpmndi:BPMNShape id="EndEvent_Rejected_di" bpmnElement="EndEvent_Rejected">
+        <dc:Bounds x="466" y="200" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="447" y="236" width="75" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1_di" bpmnElement="UserTask_1">
+        <dc:Bounds x="266" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1_di" bpmnElement="ServiceTask_1">
+        <dc:Bounds x="516" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="180" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="159" y="148" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1_di" bpmnElement="Gateway_1" isMarkerVisible="true">
+        <dc:Bounds x="416" y="105" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="399" y="81" width="84" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Approved_di" bpmnElement="EndEvent_Approved">
+        <dc:Bounds x="666" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="649" y="148" width="70" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1suvs90_di" bpmnElement="Flow_1suvs90">
+        <di:waypoint x="216" y="130" />
+        <di:waypoint x="266" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gsp0mg_di" bpmnElement="Flow_1gsp0mg">
+        <di:waypoint x="366" y="130" />
+        <di:waypoint x="416" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_029646s_di" bpmnElement="Flow_029646s">
+        <di:waypoint x="466" y="130" />
+        <di:waypoint x="516" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1spb23y_di" bpmnElement="Flow_1spb23y">
+        <di:waypoint x="441" y="155" />
+        <di:waypoint x="441" y="218" />
+        <di:waypoint x="466" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0a94mxw_di" bpmnElement="Flow_0a94mxw">
+        <di:waypoint x="616" y="130" />
+        <di:waypoint x="666" y="130" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,71 @@
+.cookie-preferences {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2, h3 {
+  color: #1a202c; // Dark but not too dark for headings
+}
+
+h1 {
+  color: #2d3748; // Slightly darker for main heading
+}
+
+p, li {
+  color: #718096; // Much lighter gray for better readability
+  line-height: 1.8;
+}
+
+ul {
+  color: #718096;
+}
+
+a {
+  color: #3182ce; // Blue links for better visibility
+  text-decoration: underline;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: #2c5282;
+  }
+}
+
+.cookie-toggle {
+  display: flex;
+  align-items: center;
+  
+  button {
+    transition: all 0.2s ease;
+  }
+}
+
+// Status badge styles
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  &.active {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+  }
+  
+  &.inactive {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+  }
+}
+
+// Enhance container styling
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+}

@@ -1,0 +1,108 @@
+.section-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.section-item {
+  border-left: 2px solid transparent;
+  
+  &.selected {
+    background-color: rgba(var(--color-primary-rgb), 0.15);
+    color: var(--color-primary);
+    font-weight: 500;
+    border-left-color: var(--color-primary);
+  }
+
+  &:hover {
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+  }
+
+  transition: all 0.2s ease;
+}
+
+// Top level sections - make them stand out
+:host > .section-list > li > .section-item {
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.05);
+  
+  &:not(:first-child) {
+    margin-top: 8px;
+  }
+}
+
+// Subsection indentation and styling
+.subsection-container {
+  position: relative;
+  padding-left: 16px;
+  margin-left: 8px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: rgba(var(--color-primary-rgb), 0.15);
+    border-radius: 4px;
+  }
+}
+
+// Nested section lists need styling
+.nested-section-list {
+  margin-top: 4px;
+  
+  .section-item {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 6px 10px;
+    
+    // Subsection markers
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: rgba(var(--color-primary-rgb), 0.5);
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    
+    // Level 2+ subsections
+    .nested-section-list & {
+      font-size: 0.9rem;
+      padding: 5px 8px;
+      
+      &::before {
+        width: 4px;
+        height: 4px;
+        background-color: rgba(var(--color-primary-rgb), 0.4);
+      }
+    }
+  }
+}
+
+// Animation for expand/collapse
+:host ::ng-deep app-doc-section-tree {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+// Expand/collapse icon styling
+.toggle-icon {
+  min-width: 16px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+  
+  &.expanded {
+    transform: rotate(90deg);
+  }
+}

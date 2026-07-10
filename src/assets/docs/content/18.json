@@ -1,0 +1,4 @@
+{
+  "sectionId": 18,
+  "content": "<h1>TaktX client libraries</h1>\n<p>These sections describe how we can deploy BPMN files and run worker code using the TaktX client libraries. The TaktX client libraries provide access to the TaktX platform and allow to start and manipulate process instances, process definitions, listen to events etc. etc.&nbsp;<br><br>We provide multiple ways to run the clients and we also provide convenience libraries for frameworks like Spring Boot and Quarkus.</p>\n<p>Find explanations on how to use these libraries in the subsections of this section. Also have a look at the <a href=\"https://github.com/taktx-io/taktx-examples\">examples repo</a></p>"
+}

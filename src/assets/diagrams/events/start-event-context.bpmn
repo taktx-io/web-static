@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_start_event_context" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1">
+  <bpmn:process id="DailyReportProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_Timer" name="Daily Timer">
+      <bpmn:outgoing>Flow_0o42ah7</bpmn:outgoing>
+      <bpmn:timerEventDefinition />
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_Complete" name="Report Complete">
+      <bpmn:incoming>Flow_1uggz8f</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ServiceTask_GenerateReport" name="Generate Report">
+      <bpmn:incoming>Flow_0o42ah7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1uggz8f</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0o42ah7" sourceRef="StartEvent_Timer" targetRef="ServiceTask_GenerateReport" />
+    <bpmn:sequenceFlow id="Flow_1uggz8f" sourceRef="ServiceTask_GenerateReport" targetRef="EndEvent_Complete" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_start_event_context">
+    <bpmndi:BPMNPlane id="BPMNPlane_start_event_context" bpmnElement="DailyReportProcess">
+      <bpmndi:BPMNShape id="StartEvent_Timer_di" bpmnElement="StartEvent_Timer">
+        <dc:Bounds x="170" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="160" y="138" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Complete_di" bpmnElement="EndEvent_Complete">
+        <dc:Bounds x="406" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="382" y="138" width="84" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_GenerateReport_di" bpmnElement="ServiceTask_GenerateReport">
+        <dc:Bounds x="256" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0o42ah7_di" bpmnElement="Flow_0o42ah7">
+        <di:waypoint x="206" y="120" />
+        <di:waypoint x="256" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uggz8f_di" bpmnElement="Flow_1uggz8f">
+        <di:waypoint x="356" y="120" />
+        <di:waypoint x="406" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1bqgnq6" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.38.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <bpmn:process id="Process_1bo8oot" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start Event" />
+    <bpmn:startEvent id="Event_0zlrwlu" name="Timer start event">
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0vzk4an" />
+    </bpmn:startEvent>
+    <bpmn:startEvent id="Event_1maymk4" name="Signal start event">
+      <bpmn:signalEventDefinition id="SignalEventDefinition_1juej82" />
+    </bpmn:startEvent>
+    <bpmn:startEvent id="Event_0s2z47j" name="Message Start event">
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0dgchrs" />
+    </bpmn:startEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1bo8oot">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="173" y="125" width="55" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0zlrwlu_di" bpmnElement="Event_0zlrwlu">
+        <dc:Bounds x="262" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="239" y="125" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1maymk4_di" bpmnElement="Event_1maymk4">
+        <dc:Bounds x="352" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="328" y="125" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0s2z47j_di" bpmnElement="Event_0s2z47j">
+        <dc:Bounds x="442" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="425" y="125" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

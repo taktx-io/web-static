@@ -1,0 +1,681 @@
+<!-- ─── Hero ──────────────────────────────────────────────────────────────── -->
+<section class="bg-gray-950 py-20 md:py-28 text-center overflow-hidden relative">
+  <div class="container relative z-10 mx-auto px-4 max-w-4xl">
+
+    <!-- Beta badge -->
+    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium mb-6">
+      <span class="material-symbols-outlined text-base">rocket_launch</span>
+      Now in Beta — all paid tiers free of charge
+    </span>
+
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
+      Start free.<br>
+      <span class="font-extrabold" style="color:#00CFFF;">Scale with control.</span>
+    </h1>
+
+    <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+      Production-grade BPMN orchestration — fully open source.<br>
+      Add operational control and governance as your usage grows.
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href="https://github.com/taktx-io/quickstart" target="_blank" rel="noopener noreferrer"
+        class="px-6 py-3 bg-primary hover:brightness-90 text-gray-900 font-bold rounded-md text-center transition-all duration-200 flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-xl">play_arrow</span>
+        Get Started (GitHub)
+      </a>
+      <a routerLink="/contact"
+        class="px-6 py-3 bg-transparent hover:bg-gray-800 text-white font-bold rounded-md text-center transition-all duration-200 border border-gray-600 hover:border-primary flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-xl">mail</span>
+        Request Early Access
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Deployment Toggle ─────────────────────────────────────────────────── -->
+<section class="bg-gray-900 py-10 border-b border-gray-800">
+  <div class="container mx-auto px-4 max-w-3xl text-center">
+
+    <p class="text-gray-500 text-xs mb-4 uppercase tracking-widest font-semibold">Deployment model</p>
+
+    <div class="inline-flex rounded-xl bg-gray-800 border border-gray-700 p-1 gap-1">
+      <button (click)="setDeployment('on-premise')"
+        [class]="activeDeployment === 'on-premise'
+          ? 'px-6 py-2.5 rounded-lg text-sm font-semibold bg-primary text-gray-900 transition-all'
+          : 'px-6 py-2.5 rounded-lg text-sm font-semibold text-gray-400 hover:text-white transition-all'">
+        On-Premise
+      </button>
+      <button (click)="setDeployment('saas')"
+        class="flex items-center gap-2"
+        [class]="activeDeployment === 'saas'
+          ? 'px-6 py-2.5 rounded-lg text-sm font-semibold bg-primary text-gray-900 transition-all'
+          : 'px-6 py-2.5 rounded-lg text-sm font-semibold text-gray-400 hover:text-white transition-all'">
+        SaaS
+        <span class="text-xs px-1.5 py-0.5 rounded bg-gray-700 text-gray-400 border border-gray-600">Coming soon</span>
+      </button>
+    </div>
+
+    <p *ngIf="activeDeployment === 'saas'" class="text-gray-500 text-sm mt-4 italic">
+      A fully managed TaktX platform is in development. Run your workflows without managing infrastructure.
+    </p>
+  </div>
+</section>
+
+<!-- ─── On-Premise Pricing Cards ─────────────────────────────────────────── -->
+<section *ngIf="activeDeployment === 'on-premise'" class="bg-gray-950 py-16">
+  <div class="container mx-auto px-4">
+
+    <h2 class="text-2xl font-bold text-white text-center mb-3">On-Premise Pricing</h2>
+    <p class="text-gray-400 text-center mb-14 max-w-xl mx-auto">
+      All tiers run the same high-performance TaktX Engine.
+      Differences are in operational control and governance.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-start">
+
+      <!-- ── Community ── -->
+      <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 flex flex-col hover:border-primary/40 transition-all duration-200">
+        <div class="mb-4">
+          <h3 class="text-xl font-bold text-white mb-2">Community</h3>
+          <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded bg-primary/10 text-primary border border-primary/30">
+            Apache 2.0 — Open Source
+          </span>
+        </div>
+
+        <div class="mb-6">
+          <div class="text-3xl font-extrabold text-primary mb-1">Free</div>
+          <div class="text-gray-500 text-sm">forever</div>
+        </div>
+
+        <ul class="space-y-2 text-gray-300 text-sm flex-1 mb-6">
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>
+            Full TaktX Engine (Apache 2.0)
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>
+            Unlimited scale (no partition limits)
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>
+            Full BPMN execution
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>
+            JWT validation &amp; message signing
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>
+            Community Console (single namespace)
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>
+            Basic monitoring and control
+          </li>
+        </ul>
+
+        <div class="border-t border-gray-700 pt-4 mb-5">
+          <p class="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-2">Support</p>
+          <ul class="space-y-1 text-sm text-gray-400">
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-gray-500 text-base">forum</span>Community forum
+            </li>
+          </ul>
+        </div>
+
+        <a href="https://github.com/taktx-io/quickstart" target="_blank" rel="noopener noreferrer"
+          class="block text-center px-4 py-2.5 bg-primary hover:brightness-90 text-gray-900 font-bold rounded-md transition-all text-sm">
+          Get Started
+        </a>
+      </div>
+
+      <!-- ── Team ── -->
+      <div class="bg-gray-800 border border-dashed border-gray-600 rounded-xl p-6 flex flex-col hover:border-gray-500 transition-all duration-200">
+        <div class="mb-4">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-xl font-bold text-gray-200">Team</h3>
+            <span class="text-xs px-2 py-0.5 rounded bg-gray-700 text-gray-400 border border-gray-600">Coming Soon</span>
+          </div>
+          <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded bg-yellow-400/10 text-yellow-400 border border-yellow-400/30">
+            Free during beta
+          </span>
+        </div>
+
+        <div class="mb-6">
+          <div class="text-3xl font-extrabold text-yellow-400 mb-1">Beta</div>
+          <div class="text-gray-500 text-sm">Pricing to be announced</div>
+        </div>
+
+        <ul class="space-y-2 text-gray-400 text-sm flex-1 mb-6">
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Operations Console (basic)
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Multi-namespace support
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Basic RBAC configuration
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Centralized monitoring
+          </li>
+        </ul>
+
+        <div class="border-t border-gray-700 pt-4 mb-5">
+          <p class="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-2">Support</p>
+          <ul class="space-y-1 text-sm text-gray-500">
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-gray-600 text-base">forum</span>Community forum
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-gray-600 text-base">mail</span>Best-effort email support
+            </li>
+          </ul>
+        </div>
+
+        <a routerLink="/contact"
+          class="block text-center px-4 py-2.5 bg-gray-700 hover:bg-gray-600 text-gray-200 font-bold rounded-md transition-all text-sm border border-gray-600">
+          Request Early Access
+        </a>
+      </div>
+
+      <!-- ── Business (highlighted) ── -->
+      <div class="bg-gray-800 border border-primary/40 rounded-xl p-6 flex flex-col relative hover:border-primary/70 transition-all duration-200 shadow-lg" style="box-shadow: 0 0 30px rgba(0,207,255,0.06)">
+        <!-- Recommended badge -->
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+          <span class="px-3 py-1 text-xs font-bold bg-primary text-gray-900 rounded-full whitespace-nowrap">
+            Recommended
+          </span>
+        </div>
+
+        <div class="mb-4 mt-2">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-xl font-bold text-white">Business</h3>
+            <span class="text-xs px-2 py-0.5 rounded bg-gray-700 text-gray-400 border border-gray-600">Coming Soon</span>
+          </div>
+          <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded bg-yellow-400/10 text-yellow-400 border border-yellow-400/30">
+            Free during beta
+          </span>
+        </div>
+
+        <div class="mb-6">
+          <div class="text-3xl font-extrabold text-yellow-400 mb-1">Beta</div>
+          <div class="text-gray-500 text-sm">Pricing to be announced</div>
+        </div>
+
+        <ul class="space-y-2 text-gray-400 text-sm flex-1 mb-6">
+          <li class="text-xs font-semibold text-gray-500 uppercase tracking-wide pb-1">Everything in Team, plus:</li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Command Center (business-level control)
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Cross-process visibility
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Advanced filtering and search
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Fine-grained RBAC
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Persistent history
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Multi-cluster visibility
+          </li>
+        </ul>
+
+        <div class="border-t border-gray-700 pt-4 mb-5">
+          <p class="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-2">Support</p>
+          <ul class="space-y-1 text-sm text-gray-500">
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-gray-600 text-base">mail</span>Email support during office hours
+            </li>
+          </ul>
+        </div>
+
+        <a routerLink="/contact"
+          class="block text-center px-4 py-2.5 bg-transparent hover:bg-primary/10 text-primary font-bold rounded-md transition-all text-sm border border-primary/50 hover:border-primary">
+          Request Early Access
+        </a>
+      </div>
+
+      <!-- ── Enterprise ── -->
+      <div class="bg-gray-800 border border-dashed border-gray-600 rounded-xl p-6 flex flex-col hover:border-gray-500 transition-all duration-200">
+        <div class="mb-4">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-xl font-bold text-gray-200">Enterprise</h3>
+            <span class="text-xs px-2 py-0.5 rounded bg-gray-700 text-gray-400 border border-gray-600">Limited</span>
+          </div>
+          <span class="inline-block px-2 py-0.5 text-xs font-semibold rounded bg-gray-700/60 text-gray-400 border border-gray-600">
+            Limited Availability
+          </span>
+        </div>
+
+        <div class="mb-6">
+          <div class="text-3xl font-extrabold text-gray-200 mb-1">Contact us</div>
+          <div class="text-gray-500 text-sm">&nbsp;</div>
+        </div>
+
+        <ul class="space-y-2 text-gray-400 text-sm flex-1 mb-6">
+          <li class="text-xs font-semibold text-gray-500 uppercase tracking-wide pb-1">Everything in Business, plus:</li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Audit and compliance features
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Signing and trust configuration
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Advanced security controls
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-gray-500 text-base mt-0.5">schedule</span>
+            Multi-tenancy governance
+          </li>
+        </ul>
+
+        <div class="border-t border-gray-700 pt-4 mb-5">
+          <p class="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-2">Support</p>
+          <ul class="space-y-1 text-sm text-gray-500">
+            <li class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-gray-600 text-base">mail</span>Priority email during office hours
+            </li>
+          </ul>
+        </div>
+
+        <a routerLink="/contact"
+          class="block text-center px-4 py-2.5 bg-gray-700 hover:bg-gray-600 text-gray-200 font-bold rounded-md transition-all text-sm border border-gray-600">
+          Contact Us
+        </a>
+        <p class="text-xs text-gray-600 text-center mt-3">Enterprise SLA (24/7 support) not yet available</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── SaaS (Coming Soon) ────────────────────────────────────────────────── -->
+<section *ngIf="activeDeployment === 'saas'" class="bg-gray-950 py-16">
+  <div class="container mx-auto px-4">
+
+    <h2 class="text-2xl font-bold text-white text-center mb-3">SaaS Pricing</h2>
+    <p class="text-gray-400 text-center mb-6 max-w-xl mx-auto">
+      A fully managed TaktX platform is in development.
+      Run your workflows without managing infrastructure.
+    </p>
+
+    <div class="flex justify-center mb-12">
+      <span class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 rounded-full text-sm font-medium">
+        <span class="material-symbols-outlined text-base">construction</span>
+        In development — join the waitlist to be notified
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-10">
+
+      <!-- Starter -->
+      <div class="bg-gray-800/50 border border-dashed border-gray-700 rounded-xl p-6 flex flex-col opacity-75">
+        <h3 class="text-xl font-bold text-gray-300 mb-1">Starter</h3>
+        <p class="text-xs text-gray-600 mb-4">Details to be announced</p>
+        <ul class="space-y-2 text-gray-500 text-sm flex-1">
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>Limited partitions</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>Limited throughput</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>Short retention</li>
+        </ul>
+      </div>
+
+      <!-- Growth -->
+      <div class="bg-gray-800/50 border border-dashed border-gray-700 rounded-xl p-6 flex flex-col opacity-75">
+        <h3 class="text-xl font-bold text-gray-300 mb-1">Growth</h3>
+        <p class="text-xs text-gray-600 mb-4">Details to be announced</p>
+        <ul class="space-y-2 text-gray-500 text-sm flex-1">
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>Higher throughput</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>More partitions</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>Extended retention</li>
+        </ul>
+      </div>
+
+      <!-- Scale -->
+      <div class="bg-gray-800/50 border border-dashed border-gray-700 rounded-xl p-6 flex flex-col opacity-75">
+        <h3 class="text-xl font-bold text-gray-300 mb-1">Scale</h3>
+        <p class="text-xs text-gray-600 mb-4">Details to be announced</p>
+        <ul class="space-y-2 text-gray-500 text-sm flex-1">
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>High throughput</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>Full Command Center</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>Multi-team support</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise SaaS -->
+      <div class="bg-gray-800/50 border border-dashed border-gray-700 rounded-xl p-6 flex flex-col opacity-75">
+        <h3 class="text-xl font-bold text-gray-300 mb-1">Enterprise SaaS</h3>
+        <p class="text-xs text-gray-600 mb-4">Details to be announced</p>
+        <ul class="space-y-2 text-gray-500 text-sm flex-1">
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>Dedicated environments</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>SLA and compliance</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-600 text-base mt-0.5">schedule</span>Advanced security</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="text-center">
+      <a routerLink="/contact"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:brightness-90 text-gray-900 font-bold rounded-md transition-all duration-200">
+        <span class="material-symbols-outlined">notifications</span>
+        Join the Waitlist
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── Beta Notice ────────────────────────────────────────────────────────── -->
+<section class="bg-gray-900 py-12 border-t border-gray-800">
+  <div class="container mx-auto px-4 max-w-3xl">
+    <div class="bg-yellow-400/10 border border-yellow-400/30 rounded-xl p-6">
+      <div class="flex items-start gap-4">
+        <span class="material-symbols-outlined text-yellow-400 text-3xl flex-shrink-0 mt-0.5">info</span>
+        <div>
+          <h3 class="text-lg font-bold text-yellow-300 mb-1">Currently in Beta</h3>
+          <p class="text-gray-300 text-sm mb-4">
+            The TaktX Operations Console is in active development. During this beta phase:
+          </p>
+          <ul class="space-y-2 text-sm text-gray-300 mb-4">
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-yellow-500 text-base mt-0.5">check_circle</span>
+              All paid tiers are available free of charge
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-yellow-500 text-base mt-0.5">check_circle</span>
+              Features and packaging may evolve
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-yellow-500 text-base mt-0.5">check_circle</span>
+              Support is provided on a best-effort basis
+            </li>
+          </ul>
+          <p class="text-gray-400 text-sm italic">Early adopters will help shape the platform.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Why Upgrade ───────────────────────────────────────────────────────── -->
+<section class="bg-gray-950 py-16">
+  <div class="container mx-auto px-4">
+
+    <h2 class="text-2xl font-bold text-white text-center mb-3">Why Upgrade</h2>
+    <p class="text-gray-400 text-center mb-12 max-w-xl mx-auto">
+      Run workflows for free. Add operational control, insight, and governance as you grow.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+      <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-primary/30 transition-all duration-200">
+        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30 mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl">tune</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">From execution to control</h3>
+        <p class="text-gray-400 text-sm">Run workflows for free. Upgrade when you need operational control over your processes at scale.</p>
+      </div>
+
+      <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-primary/30 transition-all duration-200">
+        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30 mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl">account_tree</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">From processes to business insight</h3>
+        <p class="text-gray-400 text-sm">Move beyond individual instances. Understand and control complete business flows across your organisation.</p>
+      </div>
+
+      <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-primary/30 transition-all duration-200">
+        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30 mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl">verified_user</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">From flexibility to reliability</h3>
+        <p class="text-gray-400 text-sm">Add governance, audit trails, and advanced security controls as your usage and compliance requirements grow.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Feature Comparison ────────────────────────────────────────────────── -->
+<section class="bg-gray-900 py-16 border-t border-gray-800">
+  <div class="container mx-auto px-4">
+
+    <h2 class="text-2xl font-bold text-white text-center mb-3">Feature Comparison</h2>
+    <p class="text-gray-400 text-center mb-10 max-w-xl mx-auto">
+      All tiers use the same core engine. Differences are in operational control and governance.
+    </p>
+
+    <div class="max-w-5xl mx-auto overflow-x-auto rounded-xl border border-gray-700">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-800 border-b border-gray-700">
+            <th class="py-4 px-5 text-left text-gray-400 font-semibold w-2/5">Feature</th>
+            <th class="py-4 px-4 text-center text-gray-300 font-semibold">Community</th>
+            <th class="py-4 px-4 text-center text-gray-300 font-semibold">Team</th>
+            <th class="py-4 px-4 text-center text-primary font-semibold">Business</th>
+            <th class="py-4 px-4 text-center text-gray-300 font-semibold">Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- Engine & Core category -->
+          <tr class="bg-gray-800/60">
+            <td class="py-2 px-5 text-xs font-semibold text-gray-500 uppercase tracking-widest" colspan="5">
+              Engine &amp; Core
+            </td>
+          </tr>
+          <tr *ngFor="let row of comparisonRows; let odd = odd"
+              [class]="odd ? 'bg-gray-800/20 border-b border-gray-800' : 'bg-transparent border-b border-gray-800'">
+            <td class="py-3 px-5 text-gray-300">{{ row.feature }}</td>
+            <td class="py-3 px-4 text-center">
+              <span *ngIf="row.community" class="material-symbols-outlined text-primary text-base">check</span>
+              <span *ngIf="!row.community" class="text-gray-700 font-bold">—</span>
+            </td>
+            <td class="py-3 px-4 text-center">
+              <span *ngIf="row.team" class="material-symbols-outlined text-gray-400 text-base">check</span>
+              <span *ngIf="!row.team" class="text-gray-700 font-bold">—</span>
+            </td>
+            <td class="py-3 px-4 text-center">
+              <span *ngIf="row.business" class="material-symbols-outlined text-primary text-base">check</span>
+              <span *ngIf="!row.business" class="text-gray-700 font-bold">—</span>
+            </td>
+            <td class="py-3 px-4 text-center">
+              <span *ngIf="row.enterprise" class="material-symbols-outlined text-gray-400 text-base">check</span>
+              <span *ngIf="!row.enterprise" class="text-gray-700 font-bold">—</span>
+            </td>
+          </tr>
+
+          <!-- Support & Service category -->
+          <tr class="bg-gray-800/60">
+            <td class="py-2 px-5 text-xs font-semibold text-gray-500 uppercase tracking-widest" colspan="5">
+              Support &amp; Service Levels
+            </td>
+          </tr>
+          <tr *ngFor="let row of supportRows; let odd = odd"
+              [class]="odd ? 'bg-gray-800/20 border-b border-gray-800' : 'bg-transparent border-b border-gray-800'">
+            <td class="py-3 px-5 text-gray-300">{{ row.feature }}</td>
+            <td class="py-3 px-4 text-center">
+              <span *ngIf="row.community" class="material-symbols-outlined text-primary text-base">check</span>
+              <span *ngIf="!row.community" class="text-gray-700 font-bold">—</span>
+            </td>
+            <td class="py-3 px-4 text-center">
+              <span *ngIf="row.team" class="material-symbols-outlined text-gray-400 text-base">check</span>
+              <span *ngIf="!row.team" class="text-gray-700 font-bold">—</span>
+            </td>
+            <td class="py-3 px-4 text-center">
+              <span *ngIf="row.business" class="material-symbols-outlined text-primary text-base">check</span>
+              <span *ngIf="!row.business" class="text-gray-700 font-bold">—</span>
+            </td>
+            <td class="py-3 px-4 text-center">
+              <span *ngIf="row.enterprise" class="material-symbols-outlined text-gray-400 text-base">check</span>
+              <span *ngIf="!row.enterprise" class="text-gray-700 font-bold">—</span>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table note -->
+    <p class="text-center text-gray-600 text-xs mt-4">
+      <span class="material-symbols-outlined text-gray-600 text-xs align-middle">info</span>
+      Team, Business, and Enterprise tiers are coming soon. All are free during the beta period.
+    </p>
+
+  </div>
+</section>
+
+<!-- ─── Founding Customers ─────────────────────────────────────────────────── -->
+<section class="bg-gray-900 py-16 border-t border-gray-800">
+  <div class="container mx-auto px-4 max-w-5xl">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-sm font-medium mb-5">
+        <span class="material-symbols-outlined text-base">handshake</span>
+        Limited spots available
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Become a Founding Customer</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+        We are working closely with a small number of early adopters to shape TaktX into a
+        production-grade orchestration platform.
+      </p>
+    </div>
+
+    <!-- Three-column grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+      <!-- What you get -->
+      <div class="bg-gray-800/60 border border-yellow-400/20 rounded-xl p-6 hover:border-yellow-400/40 transition-all duration-200">
+        <div class="w-11 h-11 bg-yellow-400/10 rounded-lg flex items-center justify-center border border-yellow-400/30 mb-4">
+          <span class="material-symbols-outlined text-yellow-400 text-2xl">star</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-4">As a founding customer, you get</h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-yellow-400 text-base mt-0.5 flex-shrink-0">check_circle</span>
+            Early access to the Operations Console — before general availability
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-yellow-400 text-base mt-0.5 flex-shrink-0">check_circle</span>
+            Direct influence on product direction
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-yellow-400 text-base mt-0.5 flex-shrink-0">check_circle</span>
+            Priority support and direct contact with the core team
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-yellow-400 text-base mt-0.5 flex-shrink-0">check_circle</span>
+            Free usage during beta
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-yellow-400 text-base mt-0.5 flex-shrink-0">check_circle</span>
+            Preferential pricing once commercial plans launch
+          </li>
+        </ul>
+      </div>
+
+      <!-- Who this is for -->
+      <div class="bg-gray-800/60 border border-gray-700 rounded-xl p-6 hover:border-primary/30 transition-all duration-200">
+        <div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30 mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl">groups</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-4">Who this is for</h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5 flex-shrink-0">arrow_right</span>
+            Teams building or running workflow-driven systems
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5 flex-shrink-0">arrow_right</span>
+            Organisations using BPMN today and looking to scale
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5 flex-shrink-0">arrow_right</span>
+            Companies that need more control and visibility across processes
+          </li>
+        </ul>
+      </div>
+
+      <!-- What we expect -->
+      <div class="bg-gray-800/60 border border-gray-700 rounded-xl p-6 hover:border-primary/30 transition-all duration-200">
+        <div class="w-11 h-11 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/30 mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl">task_alt</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-4">What we expect</h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5 flex-shrink-0">arrow_right</span>
+            Real usage — not just evaluation
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5 flex-shrink-0">arrow_right</span>
+            Feedback on product and usability
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5 flex-shrink-0">arrow_right</span>
+            Willingness to collaborate during beta
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center bg-gray-800/40 border border-yellow-400/20 rounded-xl py-10 px-6">
+      <p class="text-gray-300 text-lg mb-2 font-medium">Interested?</p>
+      <p class="text-gray-400 text-sm mb-6 max-w-lg mx-auto">
+        Request early access and tell us about your use case. We review every request personally.
+      </p>
+      <a routerLink="/contact"
+        class="inline-flex items-center gap-2 px-8 py-3.5 bg-yellow-400 hover:brightness-90 text-gray-900 font-bold rounded-md transition-all duration-200 text-base shadow-lg">
+        <span class="material-symbols-outlined">bolt</span>
+        Request Early Access
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="bg-gray-950 py-16 text-center border-t border-gray-800">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-white mb-4">Start free today. Scale when it matters.</h2>
+    <p class="text-gray-400 max-w-2xl mx-auto mb-8">
+      The TaktX Engine and Community Console are fully open source.
+      Get up and running in minutes with Docker Compose.
+      Upgrade to the Operations Console — free during beta.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href="https://github.com/taktx-io/quickstart" target="_blank" rel="noopener noreferrer"
+        class="px-6 py-3 bg-primary hover:brightness-90 text-gray-900 font-bold rounded-md text-center transition-all duration-200 flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined">play_arrow</span>
+        Get Started
+      </a>
+      <a routerLink="/contact"
+        class="px-6 py-3 bg-transparent hover:bg-gray-800 text-white font-bold rounded-md text-center transition-all duration-200 border border-gray-600 hover:border-primary flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined">mail</span>
+        Request Early Access
+      </a>
+    </div>
+  </div>
+</section>
+

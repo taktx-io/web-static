@@ -1,0 +1,159 @@
+<!-- Case Study: Hero -->
+<section class="relative bg-gray-900 py-16 md:py-24 overflow-hidden">
+  <div class="container relative z-10 mx-auto px-4">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-1.5 text-sm text-gray-500 mb-6">
+        <a routerLink="/" class="hover:text-gray-300 transition-colors">Home</a>
+        <span class="material-symbols-outlined text-base leading-none">chevron_right</span>
+        <span class="text-gray-400">Case study</span>
+      </div>
+
+      <!-- Badge -->
+      <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium mb-6">
+        <span class="material-symbols-outlined text-base">account_balance</span>
+        Enterprise proof of concept
+      </span>
+
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white leading-tight mb-4">
+        Migrating Camunda&nbsp;8 Processes at a Leading Dutch Financial Institution
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed">
+        A successful proof of concept demonstrating that TaktX can run enterprise Camunda&nbsp;8 workflows
+        with minimal code changes — fully integrated with an enterprise OpenID identity provider.
+      </p>
+    </div>
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/60 pointer-events-none"></div>
+</section>
+
+<!-- Summary strip -->
+<section class="bg-gray-800 border-y border-gray-700 py-10">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto grid grid-cols-3 gap-6 text-center">
+      <div>
+        <div class="text-2xl font-extrabold text-primary mb-1">Minimal</div>
+        <div class="text-gray-400 text-sm">Code changes needed</div>
+      </div>
+      <div>
+        <div class="text-2xl font-extrabold text-primary mb-1">Full</div>
+        <div class="text-gray-400 text-sm">OpenID integration</div>
+      </div>
+      <div>
+        <div class="text-2xl font-extrabold text-primary mb-1">100%</div>
+        <div class="text-gray-400 text-sm">BPMN process compatibility</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main content -->
+<section class="bg-gray-900 py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto space-y-14">
+
+      <!-- Context -->
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Context</h2>
+        <p class="text-gray-300 leading-relaxed">
+          The client is a major Dutch financial institution with a portfolio of business processes already running on Camunda&nbsp;8.
+          Their engineering teams had invested significantly in BPMN modelling and worker development built around the Zeebe client protocol.
+          The goal of the proof of concept was straightforward: could TaktX replace Camunda&nbsp;8 without requiring a rewrite of their
+          existing processes or workers — and could it integrate with their enterprise security infrastructure?
+        </p>
+      </div>
+
+      <!-- What we set out to prove -->
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-5">What we set out to prove</h2>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4 bg-gray-800 rounded-xl p-5 border border-gray-700">
+            <span class="material-symbols-outlined text-primary mt-0.5 flex-shrink-0">check_circle</span>
+            <div>
+              <div class="text-white font-semibold mb-1">BPMN process compatibility</div>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Existing Camunda&nbsp;8 BPMN models — designed in Camunda Desktop Modeler — must run on TaktX without
+                any modification to the XML process definitions.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 bg-gray-800 rounded-xl p-5 border border-gray-700">
+            <span class="material-symbols-outlined text-primary mt-0.5 flex-shrink-0">check_circle</span>
+            <div>
+              <div class="text-white font-semibold mb-1">Minimal worker code changes</div>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Existing Java workers built on the Zeebe client must migrate to TaktX with only superficial changes —
+                swapping import packages and replacing <code class="text-gray-300 text-xs bg-gray-700 px-1 py-0.5 rounded">ActivatedJob</code>
+                with <code class="text-gray-300 text-xs bg-gray-700 px-1 py-0.5 rounded">ExternalTaskTriggerDTO</code>.
+                No changes to business logic, variable handling or return types.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 bg-gray-800 rounded-xl p-5 border border-gray-700">
+            <span class="material-symbols-outlined text-primary mt-0.5 flex-shrink-0">check_circle</span>
+            <div>
+              <div class="text-white font-semibold mb-1">Enterprise OpenID integration</div>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                TaktX must integrate with the institution's existing enterprise identity provider via OpenID Connect —
+                a non-negotiable requirement for any production-grade deployment in a regulated financial environment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Results</h2>
+        <p class="text-gray-300 leading-relaxed mb-6">
+          All three goals were met. Existing BPMN process definitions ran on TaktX without any modification.
+          Worker migration required only the expected import swap — no changes to business logic, variable handling,
+          annotations or return types. The enterprise OpenID provider integrated cleanly with TaktX's authentication layer,
+          satisfying the security requirements of a regulated financial environment.
+        </p>
+        <div class="bg-primary/5 border border-primary/20 rounded-xl p-6">
+          <p class="text-gray-300 text-sm leading-relaxed italic">
+            "The migration from Camunda&nbsp;8 to TaktX required far less effort than anticipated. Our existing BPMN models
+            ran as-is, and the worker changes were limited to swapping a few import statements. The OpenID integration worked
+            within the constraints of our enterprise environment without additional configuration on our side."
+          </p>
+          <p class="text-gray-500 text-xs mt-4">— Engineering team, leading Dutch financial institution (name withheld by request)</p>
+        </div>
+      </div>
+
+      <!-- Technical approach -->
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Technical approach</h2>
+        <p class="text-gray-300 leading-relaxed">
+          The proof of concept ran TaktX Engine alongside the institution's existing Kafka infrastructure. Workers were migrated
+          iteratively — one at a time — allowing the team to validate behaviour against known outputs from their Camunda&nbsp;8
+          setup. TaktX's Zeebe-compatible protocol meant no changes were needed to tooling, CI pipelines or the BPMN
+          modelling workflow. The Community Console provided real-time visibility into running instances throughout the evaluation.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-gray-800 py-16 text-center border-t border-gray-700">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl font-bold text-white mb-3">Want to run a similar evaluation?</h2>
+    <p class="text-gray-400 mb-8 max-w-xl mx-auto">
+      We're happy to support a proof of concept for your team. Get in touch or explore the migration guide to see how little needs to change.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a routerLink="/contact"
+        class="px-6 py-3 bg-primary hover:brightness-90 text-gray-900 font-bold rounded-md inline-flex items-center justify-center gap-2 transition-all">
+        <span class="material-symbols-outlined">mail</span>Get in touch
+      </a>
+      <a routerLink="/features"
+        class="px-6 py-3 bg-transparent hover:bg-gray-700 text-white font-bold rounded-md inline-flex items-center justify-center gap-2 transition-all border border-gray-600 hover:border-primary">
+        <span class="material-symbols-outlined">featured_play_list</span>Migration guide &amp; features
+      </a>
+    </div>
+  </div>
+</section>
+
