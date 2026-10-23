@@ -1,0 +1,119 @@
+{
+  "lang": "en",
+  "path": "/en/",
+  "altLang": "nl",
+  "altPath": "/",
+  "altLabel": "NL",
+  "thisLabel": "EN",
+  "title": "TaktX — AI-enhanced engineering",
+  "description": "TaktX is Eric Hendriks' company: open-source process engine TaktX Flow, speech benchmark GOESB, voice companion Babbl, and consulting via The Future Group.",
+
+  "nav": {
+    "portfolio": "Portfolio",
+    "consulting": "Consulting & development",
+    "about": "About",
+    "contact": "Contact",
+    "aria": "Main menu",
+    "langAria": "Language"
+  },
+
+  "hero": {
+    "kicker": "TaktX · AI-enhanced engineering · the Netherlands",
+    "h1": "Reliable software, built the practical way.",
+    "p": "TaktX is Eric Hendriks' company. We build an open-source process engine, benchmark speech recognition on small hardware, and are working on a voice companion for the home. Alongside that, we consult on IT projects for Dutch organisations.",
+    "linkPortfolio": "Portfolio ↓",
+    "linkGithub": "Code on GitHub ↗",
+    "linkLinkedin": "Eric on LinkedIn ↗"
+  },
+
+  "moved": {
+    "aria": "Looking for the BPMN engine?",
+    "label": "MOVED",
+    "text": "Looking for the TaktX BPMN platform? The engine is now called <strong>TaktX Flow</strong> and has its own place on this site. Documentation, quickstart and benchmarks live there.",
+    "link": "Go to taktx.io/flow →"
+  },
+
+  "work": {
+    "h2": "Portfolio",
+    "intro": "Open-source infrastructure, independent measurement and products for the home. Different in shape, the same in approach: build what is missing, without needless complexity."
+  },
+
+  "flow": {
+    "meta": "01 · taktx.io/flow",
+    "badge": "open source · Apache 2.0",
+    "p": "A BPMN process engine that runs entirely on Kafka. No database, no central bottleneck: scales per partition and handles tens of thousands of process instances per second on ordinary hardware.",
+    "cmd1": "# clone and run (Docker required)",
+    "linkProduct": "Product page →",
+    "linkDocs": "Documentation",
+    "linkGithub": "GitHub ↗"
+  },
+
+  "goesb": {
+    "meta": "02 · goesb.com",
+    "badge": "benchmark · open data",
+    "alt": "GOESB leaderboard: scatter plot of word error rate against real-time factor",
+    "p": "Global Open Edge Speech Benchmark. Objective, reproducible measurements of speech recognition running locally — on a Raspberry Pi, a Mac or an NVIDIA card. Every number verified by hash and signature.",
+    "link": "To the leaderboard ↗",
+    "metrics": "WER · RTF · energy"
+  },
+
+  "babbl": {
+    "meta": "03 · babbl.family",
+    "badge": "prototype · waitlist open",
+    "alt": "Four Babbl devices in fabric covers on a wooden table",
+    "p": "A small, round device for the table. No screen, no buttons — you talk to it. Babbl helps older people understand letters, remember appointments and get things arranged. Alone, together, or with a little help.",
+    "link": "More about Babbl ↗",
+    "tagline": "Stay independent longer. With Babbl close by."
+  },
+
+  "terra": {
+    "meta": "04 · coming soon",
+    "badge": "in the making",
+    "alt": "Detail of a wall piece made of 3D-printed landscape tiles with a red route",
+    "p": "Real places, 3D-printed, on your wall. Landscapes, routes and photos on a grid of tiles — a travel memory you can touch.",
+    "note": "By invitation. More to come."
+  },
+
+  "consulting": {
+    "h2": "Consulting & development",
+    "h3": "Thirty years of backend, Java and process automation — applied where it has to work.",
+    "p": "Eric works as an independent solution architect, Java engineer and BPMN consultant. Assignments run through <a href=\"https://the-future-group.com\">The Future Group</a>, a collective of some 350 independent IT professionals who share knowledge, work and experience. <span class=\"mono small muted\">Independent Together.</span>",
+    "skills": ["Java", "Apache Kafka", "Camunda / BPMN", "Process orchestration", "DevOps", "Architecture"],
+    "linkLinkedin": "Full overview on LinkedIn ↗",
+    "tfgLabel": "MEMBER OF",
+    "tfgText": "Collective of ±350 independent IT professionals",
+    "tfgLink": "the-future-group.com ↗",
+    "tfgAlt": "The Future Group — Independent Together",
+    "recentLabel": "RECENT ASSIGNMENTS",
+    "assignments": [
+      {"when": "2026 – now", "who": "Enexis", "what": "BPMN / process orchestration engineer"},
+      {"when": "2025 – 2026", "who": "Rabobank", "what": "principal Java & BPMN engineer"},
+      {"when": "2022 – 2025", "who": "Alliander", "what": "senior DevOps engineer"},
+      {"when": "2021 – 2022", "who": "Dutch National Police", "what": "senior Java developer"},
+      {"when": "2020 – 2021", "who": "Google", "what": "mainframe to Java on GCP"},
+      {"when": "2018 – 2020", "who": "Dutch Railways (NS)", "what": "Java developer"},
+      {"when": "2014 – 2018", "who": "Chamber of Commerce (KvK)", "what": "Java developer"}
+    ],
+    "earlier": "Earlier, among others: Thales, Royal Netherlands Army and Air Force, NATO NC3A, NXP and Ericsson."
+  },
+
+  "about": {
+    "h2": "About Eric",
+    "p1": "<strong>Eric Hendriks has been building software that has to keep working since 1995.</strong> He started with embedded systems at Ericsson and Vitatron, moved on to architecture and Java development for defence and NATO, and has spent the last fifteen years on distributed backend systems at, among others, Dutch Railways, the Chamber of Commerce, the Dutch Police, Google and Rabobank.",
+    "p2": "His approach is practical and grounded: understand what an organisation really needs, pick the simplest architecture that can carry it, then build it well. In recent years that also means working with AI agents for design, build, test and review — not as an experiment, but as the everyday way of working.",
+    "p3": "Since 2025, TaktX is where his own products and consulting come together. Eric occasionally writes about his work on <a href=\"https://medium.com/@eric.hendriks\">Medium</a>."
+  },
+
+  "contact": {
+    "h2": "A question, a project, or just curious?",
+    "p": "Email is quickest. For Flow questions GitHub is the place; for assignments, LinkedIn."
+  },
+
+  "footer": {
+    "copyright": "© {year} TaktX",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "terms": "Terms",
+    "license": "License"
+  }
+}

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="https://taktx.io{{path}}">
+<link rel="alternate" hreflang="nl" href="https://taktx.io/">
+<link rel="alternate" hreflang="en" href="https://taktx.io/en/">
+<link rel="alternate" hreflang="x-default" href="https://taktx.io/">
+<link rel="icon" href="/favicon.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="https://taktx.io{{path}}">
+<meta property="og:locale" content="{{#nl}}nl_NL{{/nl}}{{#en}}en_GB{{/en}}">
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap nav">
+    <a href="{{path}}" class="brand"><img src="/assets/images/taktx-logo-dark.png" alt="TaktX" width="600" height="251"></a>
+    <nav aria-label="{{nav.aria}}" class="menu">
+      <a href="#portfolio">{{nav.portfolio}}</a>
+      <a href="#consulting">{{nav.consulting}}</a>
+      <a href="#about">{{nav.about}}</a>
+      <a href="#contact">{{nav.contact}}</a>
+    </nav>
+    <nav aria-label="{{nav.langAria}}" class="lang mono">
+      <a href="{{path}}" aria-current="page" class="on">{{thisLabel}}</a>
+      <a href="{{altPath}}" lang="{{altLang}}" hreflang="{{altLang}}">{{altLabel}}</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero wrap" id="top">
+  <div class="hero-copy">
+    <p class="kicker mono">{{hero.kicker}}</p>
+    <h1>{{hero.h1}}</h1>
+    <p class="lead">{{hero.p}}</p>
+  </div>
+  <div class="hero-links">
+    <a href="#portfolio">{{hero.linkPortfolio}}</a>
+    <a href="https://github.com/taktx-io">{{hero.linkGithub}}</a>
+    <a href="https://www.linkedin.com/in/taktx">{{hero.linkLinkedin}}</a>
+  </div>
+</section>
+
+<aside class="moved" aria-label="{{moved.aria}}">
+  <div class="wrap">
+    <span class="mono tag"><svg width="14" height="11" viewBox="0 0 28 22" aria-hidden="true"><path d="M3 1h7l8 10-8 10H3l8-10z" fill="#00CFFF"/><path d="M13 1h7l8 10-8 10h-7l8-10z" fill="#00CFFF"/></svg>{{moved.label}}</span>
+    <span class="moved-text">{{{moved.text}}}</span>
+    <a href="/flow/" class="moved-link">{{moved.link}}</a>
+  </div>
+</aside>
+
+<section class="work" id="portfolio">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="label">{{work.h2}}</h2>
+      <p class="muted">{{work.intro}}</p>
+    </div>
+
+    <div class="tiles">
+
+      <article class="tile tile-flow">
+        <div class="tile-body">
+          <div class="tile-meta mono"><span>{{flow.meta}}</span><span class="pill">{{flow.badge}}</span></div>
+          <h3>TaktX <span class="cyan">Flow</span></h3>
+          <p>{{flow.p}}</p>
+          <pre class="mono"><span class="c">{{flow.cmd1}}</span>
+<span class="cyan">$</span> git clone https://github.com/taktx-io/quickstart
+<span class="cyan">$</span> docker compose up -d</pre>
+          <div class="tile-links">
+            <a href="/flow/">{{flow.linkProduct}}</a>
+            <a href="/flow/documentation">{{flow.linkDocs}}</a>
+            <a href="https://github.com/taktx-io">{{flow.linkGithub}}</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="tile tile-goesb">
+        <img src="/assets/images/goesb.jpg" alt="{{goesb.alt}}" width="1370" height="350" loading="lazy" class="tile-img img-bottom">
+        <div class="tile-body">
+          <div class="tile-meta mono"><span>{{goesb.meta}}</span><span class="pill">{{goesb.badge}}</span></div>
+          <h3>GOESB</h3>
+          <p>{{goesb.p}}</p>
+          <div class="tile-links between">
+            <a href="https://www.goesb.com">{{goesb.link}}</a>
+            <span class="mono small muted">{{goesb.metrics}}</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tile tile-babbl">
+        <img src="/assets/images/babbl.jpg" alt="{{babbl.alt}}" width="1200" height="600" loading="lazy" class="tile-img img-low">
+        <div class="tile-body">
+          <div class="tile-meta mono"><span>{{babbl.meta}}</span><span class="pill">{{babbl.badge}}</span></div>
+          <h3>Babbl</h3>
+          <p>{{babbl.p}}</p>
+          <div class="tile-links between">
+            <a href="https://babbl.family">{{babbl.link}}</a>
+            <span class="mono small muted">{{babbl.tagline}}</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tile tile-terra">
+        <img src="/assets/images/terra-formata.jpg" alt="{{terra.alt}}" width="1040" height="520" loading="lazy" class="tile-img img-left">
+        <div class="tile-body">
+          <div class="tile-meta mono"><span>{{terra.meta}}</span><span class="pill">{{terra.badge}}</span></div>
+          <h3>Terra Formata</h3>
+          <p>{{terra.p}}</p>
+          <p class="mono small muted tile-note">{{terra.note}}</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="consulting" id="consulting">
+  <div class="wrap two-col">
+    <div>
+      <h2 class="label">{{consulting.h2}}</h2>
+      <p class="h3">{{consulting.h3}}</p>
+      <p class="body">{{{consulting.p}}}</p>
+      <div class="chips mono">{{#each consulting.skills}}<span>{{.}}</span>{{/each}}</div>
+      <a href="https://www.linkedin.com/in/taktx">{{consulting.linkLinkedin}}</a>
+      <a href="https://the-future-group.com" class="tfg">
+        <img src="/assets/images/the-future-group.png" alt="{{consulting.tfgAlt}}" width="315" height="400" loading="lazy">
+        <span>
+          <span class="mono small muted">{{consulting.tfgLabel}}</span>
+          <span class="body">{{consulting.tfgText}}</span>
+          <span class="link">{{consulting.tfgLink}}</span>
+        </span>
+      </a>
+    </div>
+    <div>
+      <p class="mono small muted recent-label">{{consulting.recentLabel}}</p>
+      <ul class="assignments">
+        {{#each consulting.assignments}}<li><span class="mono small muted when">{{when}}</span><span><strong>{{who}}</strong><span class="muted"> · {{what}}</span></span></li>
+        {{/each}}
+      </ul>
+      <p class="small muted">{{consulting.earlier}}</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <h2 class="label">{{about.h2}}</h2>
+    <div class="prose">
+      <p>{{{about.p1}}}</p>
+      <p>{{{about.p2}}}</p>
+      <p>{{{about.p3}}}</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap two-col">
+    <div>
+      <h2>{{contact.h2}}</h2>
+      <p class="muted-dark">{{contact.p}}</p>
+    </div>
+    <ul class="contact-list">
+      <li><a href="mailto:eric.hendriks@taktx.io">eric.hendriks@taktx.io</a></li>
+      <li><a href="https://github.com/taktx-io">github.com/taktx-io</a></li>
+      <li><a href="https://www.linkedin.com/in/taktx">linkedin.com/in/taktx</a></li>
+      <li><a href="https://medium.com/@eric.hendriks">medium.com/@eric.hendriks</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot mono">
+  <div class="wrap">
+    <span>{{footer.copyright}}</span>
+    <span class="foot-links">
+      <a href="/flow/privacy">{{footer.privacy}}</a>
+      <a href="/flow/cookies">{{footer.cookies}}</a>
+      <a href="/flow/terms">{{footer.terms}}</a>
+      <a href="/flow/license">{{footer.license}}</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,46 +1,5 @@
 <!-- Hero Section -->
 <section class="hero-section relative bg-gray-950 py-20 md:py-28 overflow-hidden min-h-[60vh] flex items-center">
-  <!-- Animation elements -->
-  <div class="animation-container">
-    <!-- Speed lines animation -->
-    <div class="speed-lines">
-      <div class="speed-line line1"></div>
-      <div class="speed-line line2"></div>
-      <div class="speed-line line3"></div>
-      <div class="speed-line line4"></div>
-      <div class="speed-line line5"></div>
-      <div class="speed-line line6"></div>
-      <div class="speed-line line7"></div>
-      <div class="speed-line line8"></div>
-    </div>
-
-    <!-- Aurora effect -->
-    <div class="aurora-container">
-      <div class="aurora-layer layer1"></div>
-      <div class="aurora-layer layer2"></div>
-      <div class="aurora-layer layer3"></div>
-    </div>
-
-    <!-- Data flow streams animation -->
-    <div class="data-streams">
-      <div class="stream stream1"></div>
-      <div class="stream stream2"></div>
-      <div class="stream stream3"></div>
-    </div>
-
-    <!-- Floating technical symbols -->
-    <div class="tech-symbols">
-      <div class="symbol symbol1">01101101</div>
-      <div class="symbol symbol2">10111001</div>
-      <div class="symbol symbol3">◉</div>
-      <div class="symbol symbol4">◉</div>
-      <div class="symbol symbol5">&#123; &#125;</div>
-      <div class="symbol symbol6">/**/</div>
-      <div class="symbol symbol7">λ</div>
-      <div class="symbol symbol8">∞</div>
-    </div>
-  </div>
-
   <div class="container relative z-20 mx-auto px-4">
     <div class="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
 
@@ -88,7 +47,7 @@
             <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>Community Console — Apache 2.0
           </span>
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-800/80 border border-gray-700 text-xs text-gray-300">
-            <span class="w-2 h-2 rounded-full bg-yellow-400 inline-block"></span>TaktX Ops — Free during beta
+            <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>DMN decisions — included
           </span>
         </div>
       </div>
@@ -229,7 +188,7 @@
           <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>Native DMN execution — decision tables, DRGs &amp; FEEL</li>
           <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>Kafka-native, horizontally scalable</li>
           <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>Namespace isolation for infrastructure-level multi-tenancy</li>
-          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>Fully open source in beta</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">check</span>Fully open source</li>
         </ul>
       </div>
 
@@ -252,28 +211,27 @@
         </ul>
       </div>
 
-      <!-- TaktX Ops -->
+      <!-- Console roadmap -->
       <div class="bg-gray-800 rounded-lg p-6 border border-gray-700 border-dashed hover:border-gray-500 transition-all duration-200">
         <div class="flex items-center gap-3 mb-3">
           <div class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center border border-gray-600">
-            <span class="material-symbols-outlined text-gray-300">admin_panel_settings</span>
+            <span class="material-symbols-outlined text-gray-300">route</span>
           </div>
           <div>
-            <h3 class="text-lg font-bold text-gray-200">TaktX Ops Console</h3>
-            <span class="text-xs text-gray-400 font-medium">Proprietary · Free during beta</span>
+            <h3 class="text-lg font-bold text-gray-200">Console roadmap</h3>
+            <span class="text-xs text-gray-400 font-medium">Next up — open source, same licence</span>
           </div>
         </div>
         <ul class="space-y-1.5 text-gray-500 text-sm">
-          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-400 text-base mt-0.5">schedule</span>Managed multi-tenancy — RBAC, identity &amp; dashboard config</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-400 text-base mt-0.5">schedule</span>Cluster-wide dashboard and engine-level visibility</li>
           <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-400 text-base mt-0.5">schedule</span>RBAC down to process &amp; version</li>
-          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-400 text-base mt-0.5">schedule</span>OpenID / enterprise identity</li>
-          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-400 text-base mt-0.5">schedule</span>Signing, validation &amp; auditability</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-400 text-base mt-0.5">schedule</span>Multi-tenancy configuration from the console</li>
+          <li class="flex items-start gap-2"><span class="material-symbols-outlined text-gray-400 text-base mt-0.5">schedule</span>Per-worker partition tuning</li>
         </ul>
-        <div class="mt-4 text-xs text-gray-500 border-t border-gray-700 pt-3">Paid after GA · Free beta trial coming soon</div>
-        <a routerLink="/beta"
-          class="mt-3 block text-center px-4 py-2 rounded-md bg-gray-700 hover:bg-gray-600 text-gray-200 font-bold text-sm transition-all border border-gray-600 flex items-center justify-center gap-2">
-          <span class="material-symbols-outlined text-base">rocket_launch</span>
-          Learn about the beta
+        <a href="https://github.com/taktx-io" target="_blank" rel="noopener noreferrer"
+          class="mt-4 block text-center px-4 py-2 rounded-md bg-gray-700 hover:bg-gray-600 text-gray-200 font-bold text-sm transition-all border border-gray-600 flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-base">code</span>
+          Follow progress on GitHub
         </a>
       </div>
     </div>
@@ -284,7 +242,7 @@
 <section class="bg-gray-950 py-16">
   <div class="container mx-auto px-4">
     <h2 class="text-2xl font-bold text-white text-center mb-3">From execution to control</h2>
-    <p class="text-gray-400 text-center mb-12 max-w-xl mx-auto">Three layers, one coherent system — start with what you need today.</p>
+    <p class="text-gray-400 text-center mb-12 max-w-xl mx-auto">Run, observe, operate — one open-source system, start with what you need today.</p>
 
     <div class="flex flex-col md:flex-row items-start gap-0 max-w-3xl mx-auto">
       <!-- Run -->
@@ -320,8 +278,8 @@
         <div class="w-14 h-14 bg-gray-700 rounded-full flex items-center justify-center border-2 border-gray-600 mb-4">
           <span class="material-symbols-outlined text-gray-300 text-2xl">tune</span>
         </div>
-        <h3 class="text-lg font-bold text-gray-200 mb-2">Full operations</h3>
-        <p class="text-gray-500 text-sm">TaktX Ops Console adds security, governance and full control at scale — coming soon.</p>
+        <h3 class="text-lg font-bold text-gray-200 mb-2">Operate</h3>
+        <p class="text-gray-500 text-sm">Cluster-wide dashboard, RBAC and tenancy controls — next on the console roadmap.</p>
       </div>
     </div>
   </div>
@@ -519,73 +477,6 @@ public class ExampleWorker &#123;
           <span class="material-symbols-outlined text-base">arrow_forward</span>
           Full migration guide on the Features page
         </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TaktX Ops Section -->
-<section class="bg-gray-950 py-16">
-  <div class="container mx-auto px-4">
-    <div class="max-w-3xl mx-auto">
-      <div class="flex items-center gap-3 mb-2">
-        <h2 class="text-2xl font-bold text-white">TaktX Ops Console</h2>
-        <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-300 text-xs font-medium border border-gray-600">Coming soon</span>
-      </div>
-      <p class="text-gray-400 text-sm mb-2">Proprietary · Free during beta · Paid at general availability</p>
-      <p class="text-gray-300 mb-8">
-        Built on the same engine as Community Console, TaktX Ops adds the operational control layer —
-        for organisations where auditability, traceability, and security are non-negotiable.
-      </p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-        <div class="flex items-start gap-3">
-          <span class="material-symbols-outlined text-primary mt-0.5">domain</span>
-          <div>
-            <div class="text-white font-medium text-sm">Managed multi-tenancy</div>
-            <div class="text-gray-400 text-sm">Dashboard-driven tenant configuration on top of Kafka namespace isolation — RBAC, identity and per-tenant controls in one place.</div>
-          </div>
-        </div>
-        <div class="flex items-start gap-3">
-          <span class="material-symbols-outlined text-primary mt-0.5">lock</span>
-          <div>
-            <div class="text-white font-medium text-sm">Fine-grained RBAC</div>
-            <div class="text-gray-400 text-sm">Control access down to process definition and version level.</div>
-          </div>
-        </div>
-        <div class="flex items-start gap-3">
-          <span class="material-symbols-outlined text-primary mt-0.5">manage_accounts</span>
-          <div>
-            <div class="text-white font-medium text-sm">OpenID integration</div>
-            <div class="text-gray-400 text-sm">Plug in your existing enterprise identity provider.</div>
-          </div>
-        </div>
-        <div class="flex items-start gap-3">
-          <span class="material-symbols-outlined text-primary mt-0.5">verified_user</span>
-          <div>
-            <div class="text-white font-medium text-sm">End-to-end trust</div>
-            <div class="text-gray-400 text-sm">Process signing and validation for full auditability.</div>
-          </div>
-        </div>
-        <div class="flex items-start gap-3">
-          <span class="material-symbols-outlined text-primary mt-0.5">hub</span>
-          <div>
-            <div class="text-white font-medium text-sm">Engine-level visibility</div>
-            <div class="text-gray-400 text-sm">See exactly what each engine node is doing at any moment.</div>
-          </div>
-        </div>
-        <div class="flex items-start gap-3">
-          <span class="material-symbols-outlined text-primary mt-0.5">tune</span>
-          <div>
-            <div class="text-white font-medium text-sm">Per-worker partition tuning</div>
-            <div class="text-gray-400 text-sm">Each worker gets its own Kafka topic. Adjust partition counts per worker from the dashboard to dial in exactly the throughput each task type needs.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-gray-800 rounded-lg p-4 border border-gray-700 text-sm text-gray-400">
-        <span class="material-symbols-outlined text-primary text-base align-middle mr-1">info</span>
-        Available soon with a free beta trial. No commitment required. Paid licensing begins at general availability.
       </div>
     </div>
   </div>
@@ -810,7 +701,7 @@ public class ExampleWorker &#123;
       <p class="text-white font-semibold text-lg mb-2">Sounds like a fit?</p>
       <p class="text-gray-400 text-sm mb-6 max-w-md mx-auto">
         Get up and running in minutes — open source, no account required.
-        Or request early access to the Operations Console.
+        Questions about running it in production? Get in touch.
       </p>
       <div class="flex flex-col sm:flex-row justify-center gap-3">
         <a href="https://github.com/taktx-io/quickstart" target="_blank" rel="noopener noreferrer"
@@ -821,7 +712,7 @@ public class ExampleWorker &#123;
         <a routerLink="/contact"
           class="px-5 py-2.5 bg-transparent hover:bg-gray-700 text-white font-bold rounded-md text-center transition-all duration-200 border border-gray-600 hover:border-primary flex items-center justify-center gap-2 text-sm">
           <span class="material-symbols-outlined text-base">mail</span>
-          Request Early Access
+          Get in touch
         </a>
         <a routerLink="/why-taktx"
           class="px-5 py-2.5 bg-transparent hover:bg-gray-700 text-gray-300 font-semibold rounded-md text-center transition-all duration-200 border border-gray-700 hover:border-gray-500 flex items-center justify-center gap-2 text-sm">

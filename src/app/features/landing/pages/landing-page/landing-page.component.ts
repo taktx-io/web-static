@@ -59,7 +59,7 @@ export class LandingPageComponent implements OnDestroy {
   heroSlides: HeroSlide[] = [
     {
       label: 'Quickstart',
-      subtext: 'High-performance BPMN & DMN execution, Kafka-native and horizontally scalable — with a simple path to real operational control.',
+      subtext: 'High-performance BPMN & DMN execution, Kafka-native and horizontally scalable — fully open source under Apache 2.0.',
       ctaPrimaryLabel: 'Get started (5 min)', ctaPrimaryIcon: 'play_arrow',
       ctaPrimaryHref: 'https://github.com/taktx-io/quickstart'
     },
@@ -84,22 +84,22 @@ export class LandingPageComponent implements OnDestroy {
       ctaPrimaryHref: 'https://github.com/taktx-io/quickstart'
     },
     {
-      label: 'Ops Dashboard', badge: 'TaktX Ops', badgeLabel: 'Preview',
+      label: 'Ops Dashboard', badge: 'Console', badgeLabel: 'Roadmap',
       src: 'assets/images/screenshots/ops-dashboard.png',
-      alt: 'TaktX Ops — cluster-wide dashboard',
-      caption: 'Cluster-wide visibility and partition control',
-      subtext: 'Cluster-wide engine visibility and Kafka partition control — for teams that need full operational grip at scale.',
-      ctaPrimaryLabel: 'Learn about TaktX Ops', ctaPrimaryIcon: 'admin_panel_settings',
-      ctaPrimaryHref: '/beta'
+      alt: 'Console roadmap — cluster-wide dashboard',
+      caption: 'Cluster-wide visibility and partition control — next up for the console',
+      subtext: 'Cluster-wide engine visibility and Kafka partition control — the next thing coming to the open-source console.',
+      ctaPrimaryLabel: 'See the roadmap', ctaPrimaryIcon: 'route',
+      ctaPrimaryHref: 'https://github.com/taktx-io'
     },
     {
-      label: 'RBAC & Tenancy', badge: 'TaktX Ops', badgeLabel: 'Preview',
+      label: 'RBAC & Tenancy', badge: 'Console', badgeLabel: 'Roadmap',
       src: 'assets/images/screenshots/ops-rbac.png',
-      alt: 'TaktX Ops — RBAC and multi-tenancy',
-      caption: 'Fine-grained access control and multi-tenancy',
-      subtext: 'Fine-grained RBAC down to process definition and version level — with full multi-tenancy and enterprise identity.',
-      ctaPrimaryLabel: 'Learn about TaktX Ops', ctaPrimaryIcon: 'lock',
-      ctaPrimaryHref: '/beta'
+      alt: 'Console roadmap — RBAC and multi-tenancy',
+      caption: 'Fine-grained access control and multi-tenancy — next up for the console',
+      subtext: 'Fine-grained RBAC down to process definition and version level, with multi-tenancy — on the console roadmap.',
+      ctaPrimaryLabel: 'See the roadmap', ctaPrimaryIcon: 'route',
+      ctaPrimaryHref: 'https://github.com/taktx-io'
     },
     {
       label: 'DMN Decision Table', badge: 'TaktX Engine', badgeLabel: 'Open source',
@@ -194,8 +194,8 @@ export class LandingPageComponent implements OnDestroy {
 
   constructor(private el: ElementRef, private seo: SeoService) {
     this.seo.update({
-      title: 'TaktX — Process Orchestration at Scale, Open Source',
-      description: 'Run BPMN and DMN at scale with TaktX — a fully open source, horizontally scalable engine. Kafka-native, integrated decision execution, no enterprise tax. Get started in 5 minutes.',
+      title: 'TaktX Flow — Process Orchestration at Scale, Open Source',
+      description: 'Run BPMN and DMN at scale with TaktX Flow — a fully open source, horizontally scalable engine. Kafka-native, integrated decision execution, no enterprise tax. Get started in 5 minutes.',
       url: '/',
       keywords: 'BPMN engine, DMN execution, open source workflow, Kafka orchestration, Camunda alternative, process automation, decision tables'
     });
