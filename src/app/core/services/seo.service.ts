@@ -9,8 +9,8 @@ export interface SeoConfig {
   keywords?: string;
 }
 
-const SITE_NAME = 'TaktX';
-const BASE_URL = 'https://taktx.io';
+const SITE_NAME = 'TaktX Flow';
+const BASE_URL = 'https://taktx.io/flow';
 const DEFAULT_IMAGE = `${BASE_URL}/assets/images/og-image.png`;
 
 @Injectable({ providedIn: 'root' })

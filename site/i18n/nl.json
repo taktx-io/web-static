@@ -1,0 +1,119 @@
+{
+  "lang": "nl",
+  "path": "/",
+  "altLang": "en",
+  "altPath": "/en/",
+  "altLabel": "EN",
+  "thisLabel": "NL",
+  "title": "TaktX — AI-enhanced engineering",
+  "description": "TaktX is het bedrijf van Eric Hendriks: open-source procesengine TaktX Flow, spraakbenchmark GOESB, spraakhulp Babbl, en consultancy via The Future Group.",
+
+  "nav": {
+    "portfolio": "Portfolio",
+    "consulting": "Advies & ontwikkeling",
+    "about": "Over",
+    "contact": "Contact",
+    "aria": "Hoofdmenu",
+    "langAria": "Taal"
+  },
+
+  "hero": {
+    "kicker": "TaktX · AI-enhanced engineering · Nederland",
+    "h1": "Betrouwbare software, praktisch gebouwd.",
+    "p": "TaktX is het bedrijf van Eric Hendriks. We bouwen een open-source procesengine, meten spraakherkenning op kleine hardware en werken aan een spraakhulp voor thuis. Daarnaast werken we als consultant aan IT-projecten voor Nederlandse organisaties.",
+    "linkPortfolio": "Portfolio ↓",
+    "linkGithub": "Code op GitHub ↗",
+    "linkLinkedin": "Eric op LinkedIn ↗"
+  },
+
+  "moved": {
+    "aria": "Op zoek naar de BPMN-engine?",
+    "label": "VERHUISD",
+    "text": "Op zoek naar het TaktX BPMN-platform? De engine heet nu <strong>TaktX Flow</strong> en heeft een eigen plek op deze site. Documentatie, quickstart en benchmarks staan daar.",
+    "link": "Naar taktx.io/flow →"
+  },
+
+  "work": {
+    "h2": "Portfolio",
+    "intro": "Open-source infrastructuur, onafhankelijke metingen en producten voor thuis. Verschillend van vorm, hetzelfde in aanpak: zelf bouwen wat er mist, zonder onnodige complexiteit."
+  },
+
+  "flow": {
+    "meta": "01 · taktx.io/flow",
+    "badge": "open source · Apache 2.0",
+    "p": "Een BPMN-procesengine die volledig op Kafka draait. Geen database, geen centrale bottleneck: schaalt per partitie en verwerkt tienduizenden procesinstanties per seconde op gewone hardware.",
+    "cmd1": "# kloon en start (Docker vereist)",
+    "linkProduct": "Productpagina →",
+    "linkDocs": "Documentatie",
+    "linkGithub": "GitHub ↗"
+  },
+
+  "goesb": {
+    "meta": "02 · goesb.com",
+    "badge": "benchmark · open data",
+    "alt": "GOESB-leaderboard: spreidingsdiagram van woordfoutpercentage tegen real-time factor",
+    "p": "Global Open Edge Speech Benchmark. Objectieve, reproduceerbare metingen van spraakherkenning die lokaal draait — op een Raspberry Pi, een Mac of een NVIDIA-kaart. Elk getal geverifieerd met hash en handtekening.",
+    "link": "Naar het leaderboard ↗",
+    "metrics": "WER · RTF · energie"
+  },
+
+  "babbl": {
+    "meta": "03 · babbl.family",
+    "badge": "prototype · wachtlijst open",
+    "alt": "Vier Babbl-apparaten in stoffen hoezen op een houten tafel",
+    "p": "Een klein, rond apparaat voor op tafel. Geen scherm, geen knoppen — je praat ermee. Babbl helpt ouderen brieven begrijpen, afspraken onthouden en dingen regelen. Zelf, samen, of met wat hulp.",
+    "link": "Meer over Babbl ↗",
+    "tagline": "Langer zelfstandig. Met Babbl dichtbij."
+  },
+
+  "terra": {
+    "meta": "04 · binnenkort",
+    "badge": "in de maak",
+    "alt": "Detail van een wandstuk uit 3D-geprinte landschapstegels met een rode route",
+    "p": "Echte plekken, in 3D geprint, aan je muur. Landschappen, routes en foto's op een raster van tegels — een reisherinnering die je kunt aanraken.",
+    "note": "Op uitnodiging. Meer volgt."
+  },
+
+  "consulting": {
+    "h2": "Advies & ontwikkeling",
+    "h3": "Dertig jaar backend, Java en procesautomatisering — ingezet bij organisaties waar het moet werken.",
+    "p": "Eric werkt als zelfstandig solution architect, Java-engineer en BPMN-consultant. Opdrachten lopen via <a href=\"https://the-future-group.com\">The Future Group</a>, een collectief van zo'n 350 onafhankelijke IT-professionals dat kennis, opdrachten en ervaring deelt. <span class=\"mono small muted\">Independent Together.</span>",
+    "skills": ["Java", "Apache Kafka", "Camunda / BPMN", "Procesorkestratie", "DevOps", "Architectuur"],
+    "linkLinkedin": "Volledig overzicht op LinkedIn ↗",
+    "tfgLabel": "AANGESLOTEN BIJ",
+    "tfgText": "Collectief van ±350 zelfstandige IT-professionals",
+    "tfgLink": "the-future-group.com ↗",
+    "tfgAlt": "The Future Group — Independent Together",
+    "recentLabel": "RECENTE OPDRACHTEN",
+    "assignments": [
+      {"when": "2026 – nu", "who": "Enexis", "what": "BPMN / process orchestration engineer"},
+      {"when": "2025 – 2026", "who": "Rabobank", "what": "principal Java & BPMN engineer"},
+      {"when": "2022 – 2025", "who": "Alliander", "what": "senior DevOps engineer"},
+      {"when": "2021 – 2022", "who": "Politie Nederland", "what": "senior Java developer"},
+      {"when": "2020 – 2021", "who": "Google", "what": "mainframe naar Java op GCP"},
+      {"when": "2018 – 2020", "who": "Nederlandse Spoorwegen", "what": "Java developer"},
+      {"when": "2014 – 2018", "who": "Kamer van Koophandel", "what": "Java developer"}
+    ],
+    "earlier": "Eerder onder meer Thales, Koninklijke Landmacht en Luchtmacht, NATO NC3A, NXP en Ericsson."
+  },
+
+  "about": {
+    "h2": "Over Eric",
+    "p1": "<strong>Eric Hendriks bouwt sinds 1995 software die moet blijven werken.</strong> Begonnen met embedded systemen bij Ericsson en Vitatron, daarna architectuur en Java-ontwikkeling voor defensie en NATO, en de afgelopen vijftien jaar gedistribueerde backend-systemen bij onder meer de Nederlandse Spoorwegen, de Kamer van Koophandel, de Politie, Google en Rabobank.",
+    "p2": "Zijn aanpak is praktisch en met beide benen op de grond: begrijpen wat een organisatie echt nodig heeft, de eenvoudigste architectuur kiezen die dat aankan, en die dan goed bouwen. De laatste jaren betekent dat ook werken met AI-agents voor ontwerp, bouw, test en review — niet als experiment, maar als dagelijkse manier van werken.",
+    "p3": "TaktX is sinds 2025 de plek waar eigen producten en consultancy samenkomen. Eric schrijft af en toe over zijn werk op <a href=\"https://medium.com/@eric.hendriks\">Medium</a>."
+  },
+
+  "contact": {
+    "h2": "Een vraag, een project, of gewoon benieuwd?",
+    "p": "Mail is het snelst. Voor Flow-vragen is GitHub de beste plek; voor opdrachten LinkedIn."
+  },
+
+  "footer": {
+    "copyright": "© {year} TaktX",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "terms": "Voorwaarden",
+    "license": "Licentie"
+  }
+}

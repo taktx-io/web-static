@@ -1,0 +1,7 @@
+# TaktX robots.txt
+# https://taktx.io
+
+User-agent: *
+Allow: /
+
+Sitemap: https://taktx.io/sitemap.xml

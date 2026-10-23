@@ -3,8 +3,15 @@
 
 <head>
   <meta charset="utf-8">
-  <title>TaktX — High-Performance BPMN Orchestration, Open Source</title>
-  <base href="/">
+  <title>TaktX Flow — High-Performance BPMN Orchestration, Open Source</title>
+  <base href="/flow/">
+  <!-- GitHub Pages SPA fallback: 404.html sends deep links here as /flow/?p=<path>; restore it before Angular boots. -->
+  <script>
+    (function () {
+      var q = new URLSearchParams(location.search), p = q.get('p');
+      if (p) { q.delete('p'); var s = q.toString(); history.replaceState(null, '', p + (s ? (p.indexOf('?') < 0 ? '?' : '&') + s : '') + location.hash); }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Primary meta -->
@@ -12,24 +19,24 @@
   <meta name="keywords" content="BPMN, workflow orchestration, open source, Kafka, Zeebe, Camunda, process engine, event-driven, horizontal scaling">
   <meta name="author" content="TaktX">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://taktx.io/">
+  <link rel="canonical" href="https://taktx.io/flow/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="TaktX">
-  <meta property="og:title" content="TaktX — High-Performance BPMN Orchestration, Open Source">
+  <meta property="og:site_name" content="TaktX Flow">
+  <meta property="og:title" content="TaktX Flow — High-Performance BPMN Orchestration, Open Source">
   <meta property="og:description" content="Production-grade, open source BPMN 2.0 engine. Horizontally scalable and Kafka-native. Works with Apache Kafka, Confluent, Redpanda, AWS MSK and Axual.">
-  <meta property="og:url" content="https://taktx.io/">
-  <meta property="og:image" content="https://taktx.io/assets/images/og-image.png">
+  <meta property="og:url" content="https://taktx.io/flow/">
+  <meta property="og:image" content="https://taktx.io/flow/assets/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="TaktX — High-Performance BPMN Orchestration, Open Source">
+  <meta name="twitter:title" content="TaktX Flow — High-Performance BPMN Orchestration, Open Source">
   <meta name="twitter:description" content="Production-grade, open source BPMN 2.0 engine. Horizontally scalable and Kafka-native. Works with Apache Kafka, Confluent, Redpanda, AWS MSK and Axual.">
-  <meta name="twitter:image" content="https://taktx.io/assets/images/og-image.png">
+  <meta name="twitter:image" content="https://taktx.io/flow/assets/images/og-image.png">
 
   <!-- Theme -->
   <meta name="theme-color" content="#00CFFF">
@@ -53,7 +60,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/bpmn-js@15.2.2/dist/bpmn-navigated-viewer.production.min.js"></script>
   <!-- Load bpmn-viewer-init from the Angular assets folder so it is served at /assets/ -->
-  <script src="/assets/bpmn-viewer-init.js"></script>
+  <script src="assets/bpmn-viewer-init.js"></script>
 </head>
 
 <body>

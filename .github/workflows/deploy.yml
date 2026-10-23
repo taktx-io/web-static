@@ -28,18 +28,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build (production)
-        run: npm run build -- --configuration production
-
-      - name: SPA fallback (404.html) + Pages files
-        run: |
-          cp dist/taktx-web/browser/index.html dist/taktx-web/browser/404.html
-          touch dist/taktx-web/browser/.nojekyll
+      - name: Build (company site + /flow + compose)
+        run: npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/taktx-web/browser
+          path: dist/pages
 
   deploy:
     needs: build

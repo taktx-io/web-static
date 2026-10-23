@@ -1,32 +1,50 @@
 # TaktX — Static Site
 
-A fully static build of [taktx.io](https://taktx.io), designed for **free hosting on GitHub Pages**.
+The TaktX company site and the TaktX Flow product site, built as **one static deployment on GitHub Pages** (taktx.io).
 
-This is a standalone snapshot of the original TaktX web app. Everything that
-required a running server (Keycloak authentication, the Quarkus backend, the
-Discourse forum, the maintenance flag) has been removed, and the previously
-dynamic documentation is baked into static JSON files so no database or API is
-needed at runtime.
+```
+/            company home, Dutch (default)           ← site/ (plain HTML, no framework)
+/en/         company home, English                   ← site/
+/flow/       TaktX Flow — the BPMN engine site       ← src/ (Angular 19, docs + search baked in)
+/404.html    redirects old engine URLs to /flow/… and acts as the SPA fallback for /flow deep links
+```
 
-It is still an Angular app — that keeps the exact look, styling and page
-structure of the original — but the production build is 100% static files.
+## Layout
 
----
+| Path | What |
+|------|------|
+| `site/template.html` | the company home page, one template for both languages |
+| `site/i18n/nl.json`, `site/i18n/en.json` | all copy — edit text here, not in the template |
+| `site/site.css` | the company site's stylesheet (IBM Plex, self-hosted from `site/assets/fonts`) |
+| `site/assets/` | images and fonts for the company site |
+| `site/public/` | root-level files: `CNAME`, `robots.txt`, `sitemap.xml`, `favicon.png` |
+| `site/build.mjs` | renders the template → `dist/site/` |
+| `src/` | the Angular product site, served under `/flow/` (`baseHref` in `angular.json`) |
+| `tools/compose-dist.mjs` | assembles `dist/pages/` = company site + `/flow/` + `404.html` |
+| `.github/workflows/deploy.yml` | builds and publishes `dist/pages/` on every push to `main` |
 
-## What changed vs. the original
+## Build
 
-| Area | Original | Static build |
-|------|----------|--------------|
-| Documentation | Fetched live from `/api/documentation/*`, editable by admins | Pre-baked JSON in `src/assets/docs/`, read-only |
-| Search | Server endpoint | Client-side over a bundled search index |
-| Auth / Login / Profile / Admin | Keycloak | Removed |
-| Forum | Discourse behind Keycloak | Removed (link dropped) |
-| Blog | — | Redirects to Medium (unchanged) |
-| Contact form | `POST /api/contact/messages` | Opens a pre-filled `mailto:` to eric.hendriks@taktx.io |
-| Maintenance flag | `/api/maintenance` | Removed (site always live) |
-| Hosting | DigitalOcean (~€50/mo) | GitHub Pages (free) |
+```bash
+npm install
+npm run build          # site + flow + compose → dist/pages/
+npm run build:site     # company home only (fast)
+npm start              # ng serve — the Angular product site at http://localhost:4200/flow/
+```
 
----
+To preview `dist/pages/` the way GitHub Pages serves it, any static server that returns `404.html` for unknown paths will do.
+
+## Editing the company home
+
+Change text in `site/i18n/*.json` (both languages), run `npm run build:site`, check `dist/site/index.html`.
+Structure and layout live in `site/template.html` and `site/site.css`. Design decisions, palette and type are in the
+project notes; the short version: IBM Plex Sans/Mono, ground `#f7f7f5`, ink `#16191d`, links `#0a6d8c`, logo cyan
+`#00CFFF` only in the mark and on dark surfaces.
+
+## TaktX Flow (the Angular site)
+
+Everything below is about the product site under `/flow/`. Flow is one open-source product under Apache 2.0 — there is
+no commercial tier, pricing page or beta programme anymore; the old `/pricing`, `/beta` and `/qr` URLs redirect to `/flow/`.
 
 ## One-time step: snapshot the documentation
 
@@ -67,15 +85,15 @@ npm start          # http://localhost:4200
 ## Production build
 
 ```bash
-npm run build      # outputs to dist/taktx-web/browser
+npm run build:flow # outputs to dist/flow/browser
 ```
 
 ---
 
 ## Deploying to GitHub Pages
 
-A workflow at `.github/workflows/deploy.yml` builds the app and publishes it to
-GitHub Pages on every push to `main`.
+A workflow at `.github/workflows/deploy.yml` runs `npm run build` and publishes
+`dist/pages/` to GitHub Pages on every push to `main`.
 
 1. Create a new GitHub repository and push this folder to it (`main` branch).
 2. In the repo: **Settings → Pages → Build and deployment → Source = GitHub Actions**.
@@ -84,7 +102,7 @@ GitHub Pages on every push to `main`.
 
 ### Custom domain (taktx.io)
 
-A `CNAME` file (`public/CNAME`) already pins the domain to `taktx.io`, so it is
+A `CNAME` file (`site/public/CNAME`) already pins the domain to `taktx.io`, so it is
 copied into every build.
 
 1. In **Settings → Pages → Custom domain**, enter `taktx.io` and save.
@@ -95,16 +113,18 @@ copied into every build.
 3. Enable **Enforce HTTPS** once the certificate is issued.
 
 > Using the default `<user>.github.io/<repo>` URL instead of a custom domain?
-> Remove `public/CNAME` and set `baseHref` in `angular.json` to `/<repo>/`.
+> Remove `site/public/CNAME` and prefix every absolute path (`/flow/`, `/assets/`, `/site.css`) with `/<repo>`.
 
 ---
 
 ## Project layout
 
 ```
+site/                            company home (template, strings, css, assets, build script)
 src/app/features/documentation   read-only docs (static JSON backed)
 src/assets/docs                  baked documentation content + images
+tools/compose-dist.mjs           assembles dist/pages/ for deployment
 tools/snapshot-docs.mjs          one-time content capture script
 .github/workflows/deploy.yml     build + deploy to GitHub Pages
-public/CNAME                     custom domain (taktx.io)
+site/public/CNAME                custom domain (taktx.io)
 ```

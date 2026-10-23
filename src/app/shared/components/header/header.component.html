@@ -1,28 +1,44 @@
+<!-- Company strip: the only thing the TaktX company site adds above the product -->
+<div class="bg-[#16191d] border-b border-[#2b3037] text-[#8b9198] text-xs font-mono">
+  <div class="container mx-auto px-6 py-2 flex flex-wrap items-center gap-x-6 gap-y-2">
+    <a href="/" class="flex items-center gap-2 text-[#8b9198] hover:text-white transition-colors">
+      <svg width="14" height="11" viewBox="0 0 28 22" aria-hidden="true"><path d="M3 1h7l8 10-8 10H3l8-10z" fill="#00CFFF"/><path d="M13 1h7l8 10-8 10h-7l8-10z" fill="#00CFFF"/></svg>TaktX
+    </a>
+    <span class="text-[#3a3f45]">/</span>
+    <span class="text-[#e6edf3]">Flow</span>
+    <span class="ml-auto flex gap-5">
+      <a href="https://www.goesb.com" target="_blank" rel="noopener noreferrer" class="text-[#8b9198] hover:text-white transition-colors">GOESB ↗</a>
+      <a href="https://babbl.family" target="_blank" rel="noopener noreferrer" class="text-[#8b9198] hover:text-white transition-colors">Babbl ↗</a>
+    </span>
+  </div>
+</div>
+
 <header class="bg-gray-900 text-white border-b border-gray-800 shadow-lg">
   <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-    <!-- Logo -->
+    <!-- Lockup: logo + product name -->
     <div class="flex items-center">
-      <a routerLink="/" class="flex items-center">
-        <img src="assets/images/taktx-logo-transparent.png" alt="TaktX Logo" class="h-12 w-auto" />
+      <a routerLink="/" class="flex items-center gap-2">
+        <img src="assets/images/taktx-logo-transparent.png" alt="TaktX" class="h-10 w-auto" />
+        <span class="text-xl font-medium" style="color:#00CFFF">Flow</span>
       </a>
     </div>
 
     <!-- Navigation -->
     <nav class="hidden md:flex items-center space-x-8">
-      <a routerLink="/"
-        class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Home</a>
+      <a routerLink="/features"
+        class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Features</a>
       <a routerLink="/documentation"
         class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Documentation</a>
       <a routerLink="/decisions"
         class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Decisions</a>
       <a href="https://medium.com/@eric.hendriks" target="_blank" rel="noopener noreferrer"
         class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Blog</a>
-      <a routerLink="/pricing"
-        class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Pricing</a>
       <a routerLink="/about"
         class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">About</a>
       <a routerLink="/contact"
         class="font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Contact</a>
+      <a href="https://github.com/taktx-io" target="_blank" rel="noopener noreferrer"
+        class="font-mono text-sm text-gray-200 border border-gray-700 rounded-md px-3 py-1.5 hover:border-primary transition-all duration-200">GitHub ↗</a>
     </nav>
 
     <!-- Mobile Menu Toggle -->
@@ -38,18 +54,22 @@
     <div class="container mx-auto px-6 py-4 space-y-2">
       <a routerLink="/"
         class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Home</a>
+      <a routerLink="/features"
+        class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Features</a>
       <a routerLink="/documentation"
         class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Documentation</a>
       <a routerLink="/decisions"
         class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Decisions</a>
       <a href="https://medium.com/@eric.hendriks" target="_blank" rel="noopener noreferrer"
         class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Blog</a>
-      <a routerLink="/pricing"
-        class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Pricing</a>
       <a routerLink="/about"
         class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">About</a>
       <a routerLink="/contact"
         class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">Contact</a>
+      <a href="https://github.com/taktx-io" target="_blank" rel="noopener noreferrer"
+        class="block py-2 font-medium text-gray-300 hover:text-primary hover:opacity-95 transition-all duration-200">GitHub ↗</a>
+      <a href="/"
+        class="block py-2 font-medium text-gray-500 hover:text-primary hover:opacity-95 transition-all duration-200">← TaktX company site</a>
     </div>
   </div>
 </header>

@@ -33,11 +33,6 @@ export const routes: Routes = [
     canActivate: [mediumRedirectGuard]
   },
 
-  // Public Beta page (public)
-  {
-    path: 'beta',
-    loadComponent: () => import('./features/alpha/pages/public-alpha/public-alpha.component').then(c => c.PublicAlphaComponent)
-  },
 
   // About page (public)
   {
@@ -75,11 +70,6 @@ export const routes: Routes = [
     loadComponent: () => import('./features/legal/pages/terms-of-service/terms-of-service.component').then(c => c.TermsOfServiceComponent)
   },
 
-  // Pricing page (public)
-  {
-    path: 'pricing',
-    loadComponent: () => import('./features/pricing/pages/pricing/pricing.component').then(c => c.PricingComponent)
-  },
 
   // Why TaktX page (public)
   {
@@ -99,11 +89,11 @@ export const routes: Routes = [
     loadComponent: () => import('./features/legal/pages/license/license.component').then(c => c.LicenseComponent)
   },
 
-  // CamundaCon Amsterdam campaign page (public) — scanned via QR code
-  {
-    path: 'qr',
-    loadComponent: () => import('./features/campaign/pages/camundacon/camundacon-landing.component').then(c => c.CamundaConLandingComponent)
-  },
+
+  // Retired pages → product home
+  { path: 'beta', redirectTo: '', pathMatch: 'full' },
+  { path: 'pricing', redirectTo: '', pathMatch: 'full' },
+  { path: 'qr', redirectTo: '', pathMatch: 'full' },
 
   // Wildcard route for 404
   { path: '**', component: PageNotFoundComponent }
